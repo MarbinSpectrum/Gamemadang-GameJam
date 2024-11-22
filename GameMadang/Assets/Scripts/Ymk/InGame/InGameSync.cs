@@ -6,206 +6,85 @@ using System.Collections.Generic;
 
 public class InGameSync : MonoBehaviourPunCallbacks
 {
-    private int GameSeed;
+    private Dictionary<string, object> gameState = new Dictionary<string, object>();
+
     public int gameSeed
     {
-        get
-        {
-            return GameSeed;
-        }
-        set
-        {
-            GameSeed = value;
-
-            ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable();
-            hashtable.Add("gameSeed", gameSeed);
-
-            Player[] player = PhotonNetwork.PlayerListOthers;
-            foreach (Player p in player)
-                p.SetCustomProperties(hashtable);
-        }
+        get => GetState<int>("gameSeed");
+        set => UpdateState("gameSeed", value);
     }
-    private int Round;
+
     public int round
     {
-        get
-        {
-            return Round;
-        }
-        set
-        {
-            Round = value;
-
-            ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable();
-            hashtable.Add("round", round);
-
-            Player[] player = PhotonNetwork.PlayerListOthers;
-            foreach (Player p in player)
-                p.SetCustomProperties(hashtable);
-        }
+        get => GetState<int>("gameSeed");
+        set => UpdateState("round", value);
     }
 
-    private GameResult Res;
     public GameResult res
     {
-        get
-        {
-            return Res;
-        }
-        set
-        {
-            Res = value;
-
-            ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable();
-            hashtable.Add("res", res);
-
-            Player[] player = PhotonNetwork.PlayerListOthers;
-            foreach (Player p in player)
-                p.SetCustomProperties(hashtable);
-        }
+        get => GetState<GameResult>("res");
+        set => UpdateState("res", value);
     }
 
-    private int MasterHp;
     public int masterHp
     {
-        get
-        {
-            return MasterHp;
-        }
-        set
-        {
-            MasterHp = value;
-
-            ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable();
-            hashtable.Add("masterHp", masterHp);
-
-            Player[] player = PhotonNetwork.PlayerListOthers;
-            foreach (Player p in player)
-                p.SetCustomProperties(hashtable);
-        }
+        get => GetState<int>("masterHp");
+        set => UpdateState("masterHp", value);
     }
 
-    private int SlaveHp;
     public int slaveHp
     {
-        get
-        {
-            return SlaveHp;
-        }
-        set
-        {
-            SlaveHp = value;
-
-            ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable();
-            hashtable.Add("slaveHp", slaveHp);
-
-            Player[] player = PhotonNetwork.PlayerListOthers;
-            foreach (Player p in player)
-                p.SetCustomProperties(hashtable);
-        }
+        get => GetState<int>("slaveHp");
+        set => UpdateState("slaveHp", value);
     }
 
-    private int MasterWin;
     public int masterWin
     {
-        get
-        {
-            return MasterWin;
-        }
-        set
-        {
-            MasterWin = value;
-
-            ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable();
-            hashtable.Add("masterWin", masterWin);
-
-            Player[] player = PhotonNetwork.PlayerListOthers;
-            foreach (Player p in player)
-                p.SetCustomProperties(hashtable);
-        }
+        get => GetState<int>("masterWin");
+        set => UpdateState("masterWin", value);
     }
 
-    private int SlaveWin;
     public int slaveWin
     {
-        get
-        {
-            return SlaveWin;
-        }
-        set
-        {
-            SlaveWin = value;
-
-            ExitGames.Client.Photon.Hashtable hashtable = new ExitGames.Client.Photon.Hashtable();
-            hashtable.Add("slaveWin", slaveWin);
-
-            Player[] player = PhotonNetwork.PlayerListOthers;
-            foreach (Player p in player)
-                p.SetCustomProperties(hashtable);
-        }
+        get => GetState<int>("slaveWin");
+        set => UpdateState("slaveWin", value);
     }
 
     public void Start()
     {
-        if (photonView.IsMine)
+        if (IsMasterClient())
         {
             gameSeed = (int)(Time.time * 100f);
             round = 1;
         }
     }
 
+    private T GetState<T>(string key)
+    {
+        if (gameState.TryGetValue(key, out var value) && value is T castValue)
+            return castValue;
+        return default;
+    }
+
+    private void UpdateState(string key, object value)
+    {
+        if (gameState.ContainsKey(key))
+            gameState[key] = value;
+        else
+            gameState.Add(key, value);
+
+        var hashtable = new ExitGames.Client.Photon.Hashtable { { key, value } };
+        PhotonNetwork.CurrentRoom.SetCustomProperties(hashtable);
+    }
+
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
-        if (targetPlayer == PhotonNetwork.LocalPlayer)
+        foreach (var key in changedProps.Keys)
         {
-            if (changedProps["gameSeed"] != null)
+            if (key is string propertyName && changedProps[propertyName] != null)
             {
-                GameSeed = (int)changedProps["gameSeed"];
-
-                string[] checkProperties = new string[] { "gameSeed" };
-                PhotonNetwork.RemovePlayerCustomProperties(checkProperties);
-            }
-            else if (changedProps["round"] != null)
-            {
-                Round = (int)changedProps["round"];
-
-                string[] checkProperties = new string[] { "round" };
-                PhotonNetwork.RemovePlayerCustomProperties(checkProperties);
-            }
-            else if (changedProps["res"] != null)
-            {
-                Res = (GameResult)changedProps["res"];
-
-                string[] checkProperties = new string[] { "res" };
-                PhotonNetwork.RemovePlayerCustomProperties(checkProperties);
-            }
-            else if (changedProps["masterHp"] != null)
-            {
-                MasterHp = (int)changedProps["masterHp"];
-
-                string[] checkProperties = new string[] { "masterHp" };
-                PhotonNetwork.RemovePlayerCustomProperties(checkProperties);
-            }
-            else if (changedProps["slaveHp"] != null)
-            {
-                SlaveHp = (int)changedProps["slaveHp"];
-
-                string[] checkProperties = new string[] { "slaveHp" };
-                PhotonNetwork.RemovePlayerCustomProperties(checkProperties);
-            }
-            else if (changedProps["masterWin"] != null)
-            {
-                MasterWin = (int)changedProps["masterWin"];
-
-                string[] checkProperties = new string[] { "masterWin" };
-                PhotonNetwork.RemovePlayerCustomProperties(checkProperties);
-            }
-            else if (changedProps["slaveWin"] != null)
-            {
-                SlaveWin = (int)changedProps["slaveWin"];
-
-                string[] checkProperties = new string[] { "slaveWin" };
-                PhotonNetwork.RemovePlayerCustomProperties(checkProperties);
+                //키값 업데이트
+                gameState[propertyName] = changedProps[propertyName];
             }
         }
     }
