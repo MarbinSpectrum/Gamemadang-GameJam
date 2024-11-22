@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TestMouse : MonoBehaviour
+public class Mouse : MonoBehaviour
 {
     private Camera cam;
     private Vector3 mousePosition;
@@ -11,7 +11,7 @@ public class TestMouse : MonoBehaviour
     private void Awake()
     {
         cam = Camera.main;
-        layerMask = (1 << 6) + (1 << 8);
+        layerMask = (1 << 6) + (1 << 8) +(1<<9);
     }
 
     // Update is called once per frame
@@ -34,8 +34,16 @@ public class TestMouse : MonoBehaviour
             }
             else if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("Unit");
+                if(hit.collider.gameObject.layer == 6)
+                {
+                    GameManager.Instance.UpdateLife();
+                }
+                else if(hit.collider.gameObject.layer == 9)
+                {
+                    //Á¤´ä
+                }
             }
+            
         }
         else
         {

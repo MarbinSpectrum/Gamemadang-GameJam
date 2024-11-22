@@ -22,6 +22,10 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     instance = obj.GetComponent<T>();
                 }
             }
+            else
+            {
+                Destroy(instance.gameObject);
+            }
             return instance;
         }
     }

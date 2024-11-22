@@ -9,11 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Ymk/Lobby.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Ymk/TestMain.unity
-    guid: 43863f8e9845b6e438312c7658446d5a
+    path: Assets/Scenes/MultiGame.unity
+    guid: 3524e1d76bf1cd045b8036ba75c9772e
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 4bbc43d7be7528c4ea8e49a7f2e05c22
+  - enabled: 1
+    path: Assets/Scenes/Ymk/TestMain.unity
+    guid: 43863f8e9845b6e438312c7658446d5a
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 69f7b1c44b108d34aa5c6b807165f4d6, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 2ed6acfc53a9905479c16b7b0ebfc160, type: 2}

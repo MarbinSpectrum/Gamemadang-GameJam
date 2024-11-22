@@ -13,9 +13,11 @@ public class ObjectPool : Singleton<ObjectPool>
 
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
-
-    private void Awake()
+    
+    protected override void Awake()
     {
+        base.Awake();
+
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
         foreach (var pool in pools)
         {
