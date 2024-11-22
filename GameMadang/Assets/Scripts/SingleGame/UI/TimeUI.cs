@@ -1,9 +1,7 @@
 using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class TimeUI : MonoBehaviour
 {
@@ -18,42 +16,42 @@ public class TimeUI : MonoBehaviour
     private void Start()
     {
         curtime = time;
-        wait= new WaitForSeconds(0.1f);
-        StartCountDown();
+        wait= new WaitForSeconds(1f);
+       // StartCountDown();
     }
 
-    public void StartCountDown()
-    {
-        StartCoroutine(CountDown());
-    }
-    private IEnumerator CountDown()
-    {
-        while (true)
-        {
-            curtime -= 0.1f;
-            timeTxt.text = CalTime(curtime);
-            timeGage.fillAmount = curtime / time;
-
-            if (curtime<=0)
-            {
-                break;
-            }
-            yield return wait;
-        }
-    }
-
-    //private void Update()
+    //public void StartCountDown()
     //{
-    //    if (curtime <= 0) return;
-        
-    //    if (time > 0f)
+    //    StartCoroutine(CountDown());
+    //}
+    //private IEnumerator CountDown()
+    //{
+    //    while (true)
     //    {
-    //        timeTxt.text=CalTime(curtime);
-    //        timeGage.fillAmount = (int)curtime/time;
+    //        curtime -= 1f;
+    //        timeTxt.text = CalTime(curtime);
 
-    //        curtime -= Time.deltaTime;
+    //        timeGage.fillAmount = (int)curtime / time;
+
+    //        if (curtime<=0)
+    //        {
+    //            break;
+    //        }
+    //        yield return wait;
     //    }
     //}
+
+    private void Update()
+    {
+        if (curtime <= 0) return;
+
+        if (time > 0f)
+        {
+            timeGage.fillAmount = curtime / time;
+            timeTxt.text = CalTime(curtime);
+            curtime -= Time.deltaTime;
+        }
+    }
 
     private string CalTime(float _curTime)
     {

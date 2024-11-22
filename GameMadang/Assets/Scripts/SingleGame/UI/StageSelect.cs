@@ -1,13 +1,19 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StageSelect : MonoBehaviour
 {
-    [SerializeField] private int stageCount;
+    public int stageCount;
+    //Å×½ºÆ® 
+    public int curOpenStage;
     [SerializeField] private GameObject prefab;
 
-    private void Awake()
+    private GameObject[] stages ;
+
+    private void Start()
     {
+        stages = new GameObject[stageCount];
         Init();
     }
 
@@ -15,13 +21,28 @@ public class StageSelect : MonoBehaviour
     {
         for(int i=0; i<stageCount;i++)
         {
-            GameObject obj=Instantiate(prefab,this.transform);
+            GameObject obj=Instantiate(prefab, this.transform);
+            stages[i] = obj;
 
-            if(obj.transform.GetChild(0).TryGetComponent<TextMeshProUGUI>(out TextMeshProUGUI text))
+            if (obj.TryGetComponent<Button>(out Button btn))
             {
-                text.text = $"{i+1}";
+                TextMeshProUGUI text = btn.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                text.text = $"{i + 1}";
+
+                if (i < curOpenStage) OpenStage(obj);
             }
         }
     }
+
+    private void OpenStage(GameObject obj)
+    {
+        if (obj.TryGetComponent<Button>(out Button btn))
+        {
+            btn.interactable = true;
+            obj.transform.GetChild(1).gameObject.SetActive(false);
+
+        }
+    }
+  
 
 }

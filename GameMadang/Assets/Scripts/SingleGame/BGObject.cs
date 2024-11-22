@@ -13,21 +13,13 @@ public class BGObject : MonoBehaviour
         originColor = sprite.color;
         translucentColor = new Color(originColor.r, originColor.g, originColor.b, 0.5f);
     }
-    private void Update()
+   
+    public void OnMouse()
     {
-        if(isMouseOver)
-        {
-            sprite.color = translucentColor;
-        }
-    }
-    private void OnMouseEnter()
-    {
-        isMouseOver = true;
         sprite.color = translucentColor;
     }
-    private void OnMouseExit()
+    public void OutMouse()
     {
-        isMouseOver = false;
         sprite.color = originColor;
     }
 }

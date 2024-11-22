@@ -764,6 +764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageCount: 15
+  curOpenStage: 3
   prefab: {fileID: 1362256420281872616, guid: 47cb8cd0c0d171d40af51e3e9197680e, type: 3}
 --- !u!1 &1878156557
 GameObject:
