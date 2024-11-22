@@ -5,8 +5,7 @@ using UnityEngine.UI;
 public class StageSelect : MonoBehaviour
 {
     public int stageCount;
-    //Å×½ºÆ® 
-    public int curOpenStage;
+    private int curOpenStage;
     [SerializeField] private GameObject prefab;
 
     private GameObject[] stages ;
@@ -14,6 +13,7 @@ public class StageSelect : MonoBehaviour
     private void Start()
     {
         stages = new GameObject[stageCount];
+        curOpenStage = GameManager.Instance.ClearStage;
         Init();
     }
 
