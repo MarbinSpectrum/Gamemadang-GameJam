@@ -48,8 +48,8 @@ public class MultiGameUI : MonoBehaviourPun
     {
         text.text = $"{inGameSync.slaveHp}";
         UpdateUI();
-        if (inGameSync.masterHp == 0 || inGameSync.slaveHp == 0) 
-        CheckResult();
+        //if (inGameSync.masterHp == 0 || inGameSync.slaveHp == 0) 
+        //CheckResult();
     }
 
     private void UpdateUI()

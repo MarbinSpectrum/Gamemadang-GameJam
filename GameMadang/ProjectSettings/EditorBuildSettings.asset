@@ -9,14 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Ymk/Lobby.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/MultiGame.unity
-    guid: 3524e1d76bf1cd045b8036ba75c9772e
+    path: Assets/Scenes/Ymk/TestMain.unity
+    guid: 43863f8e9845b6e438312c7658446d5a
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 4bbc43d7be7528c4ea8e49a7f2e05c22
-  - enabled: 1
-    path: Assets/Scenes/Ymk/TestMain.unity
-    guid: 43863f8e9845b6e438312c7658446d5a
   - enabled: 1
     path: Assets/Scenes/SingleGame.unity
     guid: fc2384b52addb1647a3ee10685c89f4c

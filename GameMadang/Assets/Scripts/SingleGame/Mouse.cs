@@ -43,14 +43,17 @@ public class Mouse : MonoBehaviour
 
             if(Input.GetMouseButtonDown(0))
             {
-                if (hit[i].collider.gameObject.layer == 6)
+                if (hit[i].collider.gameObject.layer == 9)
+                {
+                    Debug.Log("정답");
+                    return;
+                }
+                else if (hit[i].collider.gameObject.layer == 6)
                 {
                     GameManager.Instance.OnLife();
                     Debug.Log("오답");
-                }
-                else if (hit[i].collider.gameObject.layer == 9)
-                {
-                    Debug.Log("정답");
+                    return;
+
                 }
             }
         }
