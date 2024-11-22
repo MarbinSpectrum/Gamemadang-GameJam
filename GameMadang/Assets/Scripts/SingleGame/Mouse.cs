@@ -20,38 +20,48 @@ public class Mouse : MonoBehaviour
         mousePosition = Input.mousePosition ;
         mousePosition=cam.ScreenToWorldPoint(mousePosition);
 
-        RaycastHit2D hit = Physics2D.Raycast(mousePosition, transform.forward, 10f, layerMask);
+        RaycastHit2D[] hit = Physics2D.RaycastAll(mousePosition, transform.forward, 10f, layerMask);
 
-        if(hit)
+        for(int i=0; i<hit.Length; i++)
         {
-            if (hit.collider.gameObject.layer == 8)//배경 반투명
+            if (hit[i].collider.gameObject.layer == 8)
             {
-                if(hit.collider.gameObject.TryGetComponent<BGObject>(out BGObject bGObject))
+                if (hit[i].collider.gameObject.TryGetComponent<BGObject>(out BGObject bGObject))
                 {
                     bgObj = bGObject;
                     bGObject.OnMouse();
                 }
             }
-            else if (Input.GetMouseButtonDown(0))
+            else
             {
-                if(hit.collider.gameObject.layer == 6)
+                if (bgObj != null)
                 {
-                    GameManager.Instance.UpdateLife();
-                }
-                else if(hit.collider.gameObject.layer == 9)
-                {
-                    //정답
+                    bgObj.OutMouse();
+                    bgObj = null;
                 }
             }
-            
+
+            if(Input.GetMouseButtonDown(0))
+            {
+                if (hit[i].collider.gameObject.layer == 6)
+                {
+                    GameManager.Instance.OnLife();
+                    Debug.Log("오답");
+                }
+                else if (hit[i].collider.gameObject.layer == 9)
+                {
+                    Debug.Log("정답");
+                }
+            }
         }
-        else
+        if(hit.Length==0)
         {
-            if(bgObj !=null)
+            if (bgObj != null)
             {
                 bgObj.OutMouse();
                 bgObj = null;
             }
         }
+
     }
 }

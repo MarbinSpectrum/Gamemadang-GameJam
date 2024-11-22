@@ -26,7 +26,7 @@ public class ObjectPool : Singleton<ObjectPool>
             {
                 Vector3 pos = new Vector3(Random.Range(-7.0f, 7.0f), Random.Range(-3.0f, 3.0f));
                 GameObject obj = Instantiate(pool.prefab, pos, Quaternion.identity, this.transform);
-                obj.SetActive(true);
+                obj.SetActive(true);//юс╫ц
                 objectPool.Enqueue(obj);
             }
 
@@ -73,5 +73,13 @@ public class ObjectPool : Singleton<ObjectPool>
             }
         }
         return null;
+    }
+
+    public void closeObj()
+    {
+        for(int i=0; i<this.gameObject.transform.childCount; i++)
+        {
+            this.gameObject.transform.GetChild(i).gameObject.SetActive(false);
+        }
     }
 }

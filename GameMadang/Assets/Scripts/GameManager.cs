@@ -10,5 +10,7 @@ public class GameManager : Singleton<GameManager>
     {
         OnLife?.Invoke();
     }
+
+    
    
 }
