@@ -44,7 +44,6 @@ public class InGameSync : MonoBehaviourPun, IPunObservable
             this.res = (GameResult)stream.ReceiveNext();
             this.masterHp = (int)stream.ReceiveNext();
             this.slaveHp = (int)stream.ReceiveNext();
-            this.masterHp = (int)stream.ReceiveNext();
             this.round = (int)stream.ReceiveNext();
             this.masterWin = (int)stream.ReceiveNext();
             this.slaveWin = (int)stream.ReceiveNext();
