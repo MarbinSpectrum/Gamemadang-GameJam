@@ -8,5 +8,6 @@ public class MainStart : MonoBehaviour
     {
         ServerMgr.instance.SetInGame();
         PhotonNetwork.Instantiate("Mouse", Vector3.zero, Quaternion.identity);
+
     }
 }
