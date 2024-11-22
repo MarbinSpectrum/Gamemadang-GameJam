@@ -10,12 +10,16 @@ public class InGameSync : MonoBehaviourPun, IPunObservable
     public GameResult   res;
     public int          masterHp;
     public int          slaveHp;
+    public int          round;
+    public int          masterWin;
+    public int          slaveWin;
 
     public void Start()
     {
         if (photonView.IsMine)
         {
             gameSeed = (int)(Time.time * 100f);
+            round = 1;
         }
     }
 
@@ -29,6 +33,9 @@ public class InGameSync : MonoBehaviourPun, IPunObservable
             stream.SendNext((int)res);
             stream.SendNext(masterHp);
             stream.SendNext(slaveHp);
+            stream.SendNext(round);
+            stream.SendNext(masterWin);
+            stream.SendNext(slaveWin);
         }
         else
         {
@@ -37,7 +44,10 @@ public class InGameSync : MonoBehaviourPun, IPunObservable
             this.res = (GameResult)stream.ReceiveNext();
             this.masterHp = (int)stream.ReceiveNext();
             this.slaveHp = (int)stream.ReceiveNext();
-
+            this.masterHp = (int)stream.ReceiveNext();
+            this.round = (int)stream.ReceiveNext();
+            this.masterWin = (int)stream.ReceiveNext();
+            this.slaveWin = (int)stream.ReceiveNext();
         }
     }
 
