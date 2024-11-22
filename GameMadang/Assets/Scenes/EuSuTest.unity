@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 314607498}
   - component: {fileID: 314607499}
   m_Layer: 0
-  m_Name: Test
+  m_Name: TestMouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1384,7 +1384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00f8e93069799044817689bbc4edd55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 10
+  time: 90
   timeGage: {fileID: 1513225339}
   timeTxt: {fileID: 225954483}
 --- !u!1 &1513225337

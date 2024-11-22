@@ -1,30 +1,59 @@
 using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
+using Unity.VisualScripting;
 
 public class TimeUI : MonoBehaviour
 {
     public float time =0;
     private float curtime;
+
     [SerializeField] private Image timeGage;
     [SerializeField] private TextMeshProUGUI timeTxt;
 
-    private void Awake()
+    WaitForSeconds wait;
+
+    private void Start()
     {
         curtime = time;
+        wait= new WaitForSeconds(0.1f);
+        StartCountDown();
     }
-    private void Update()
-    {
-        if (curtime <= 0) return;
-        
-        if (time > 0f)
-        {
-            timeTxt.text=CalTime(curtime);
-            timeGage.fillAmount = (int)curtime/time;
 
-            curtime -= Time.deltaTime;
+    public void StartCountDown()
+    {
+        StartCoroutine(CountDown());
+    }
+    private IEnumerator CountDown()
+    {
+        while (true)
+        {
+            curtime -= 0.1f;
+            timeTxt.text = CalTime(curtime);
+            timeGage.fillAmount = curtime / time;
+
+            if (curtime<=0)
+            {
+                break;
+            }
+            yield return wait;
         }
     }
+
+    //private void Update()
+    //{
+    //    if (curtime <= 0) return;
+        
+    //    if (time > 0f)
+    //    {
+    //        timeTxt.text=CalTime(curtime);
+    //        timeGage.fillAmount = (int)curtime/time;
+
+    //        curtime -= Time.deltaTime;
+    //    }
+    //}
 
     private string CalTime(float _curTime)
     {
