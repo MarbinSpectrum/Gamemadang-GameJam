@@ -7,6 +7,8 @@ public class SpawnUnit : MonoBehaviour
     [SerializeField] private UnitObj findObj;
     [SerializeField] private int spawnCnt;
 
+    public float[] xRange;
+    public float[] yRange;
 
     private void Start()
     {
@@ -14,7 +16,7 @@ public class SpawnUnit : MonoBehaviour
 
         for (int i = 0; i < spawnCnt; i++)
         {
-            Vector3 pos = new Vector3(Random.Range(-7.0f, 7.0f), Random.Range(-3.0f, 3.0f));
+            Vector3 pos = new Vector3(Random.Range(xRange[0], xRange[1]), Random.Range(yRange[0], yRange[1]));
             UnitObj obj = ObjectPool.Instance.SpawnFromPool("Obj1");
             obj.SetUnit(i, (int)System.DateTime.Now.Ticks);
             obj.transform.position = pos;
@@ -22,7 +24,7 @@ public class SpawnUnit : MonoBehaviour
         }
         for(int j = 0;j<1;j++)
         {
-            Vector3 pos = new Vector3(Random.Range(-7.0f, 7.0f), Random.Range(-3.0f, 3.0f));
+            Vector3 pos = new Vector3(Random.Range(xRange[0], xRange[1]), Random.Range(yRange[0], yRange[1]));
             UnitObj obj = ObjectPool.Instance.SpawnFromPool("Obj2");
             obj.SetUnit(j, (int)System.DateTime.Now.Ticks);
             obj.transform.position = pos;

@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Test2
   m_Shader: {fileID: 4800000, guid: 56b68568862278046b925d55b3601a9c, type: 3}
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 2100000, guid: ddeaa1e8688cf5b46bfbcffb7263c69a, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -29,18 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - PixelSnap: 0
-    - _AnimationSpeed: 15
-    - _ColumnsX: 4
-    - _Cutoff: 0.62
-    - _Hight: 1
-    - _HightCnt: 1
-    - _RowsY: 1
-    - _SpriteCnt: 4
-    - _TotalFrame: 4
     - _Width: 4
-    - _WidthCnt: 1
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
