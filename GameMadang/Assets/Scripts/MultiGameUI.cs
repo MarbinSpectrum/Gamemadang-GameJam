@@ -27,10 +27,14 @@ public class MultiGameUI : MonoBehaviour
 
     private bool runGame = false;
 
+    private int gameCnt = 0;
+
     private void Awake()
     {
         GameManager.Instance.OnLife += CheckLife;
         GameManager.Instance.OnScore += CheckScore;
+        if (PhotonNetwork.IsMasterClient)
+            InGameSync.instance.gameSeed = 0;
 
         ServerMgr.instance.SetInGame();
         PhotonNetwork.Instantiate("Mouse", Vector3.zero, Quaternion.identity);
@@ -57,10 +61,9 @@ public class MultiGameUI : MonoBehaviour
             yield return new WaitUntil(() => InGameSync.instance.gameSeed != 0);
 
             GameManager.Instance.GameStart(countText);
-            multiSpawn.CreateUnit(InGameSync.instance.gameSeed);
-
+            multiSpawn.CreateUnit(InGameSync.instance.gameSeed + gameCnt);
+            gameCnt += 2324234;
             yield return new WaitUntil(() => Time.timeScale != 0);
-
             runGame = true;
         }
 
@@ -95,9 +98,15 @@ public class MultiGameUI : MonoBehaviour
     public void CheckScore()//정답 클릭시 호출
     {
         if (InGameSync.instance.IsMasterClient())
+        {
             InGameSync.instance.res = GameResult.MasterWin;
+            InGameSync.instance.masterWin++;
+        }
         else
+        {
             InGameSync.instance.res = GameResult.SlaveWin;
+            InGameSync.instance.slaveWin++;
+        }
     }
     
     private void UpdateUI() // 점수와 목숨 동기화
@@ -120,8 +129,6 @@ public class MultiGameUI : MonoBehaviour
         if (timeCheck.timeOver)
         {
             InGameSync.instance.res = GameResult.Draw;
-            InGameSync.instance.gameSeed = 0;
-
             if (InGameSync.instance.res == GameResult.Draw)
             {
                 Time.timeScale = 0;
@@ -132,15 +139,11 @@ public class MultiGameUI : MonoBehaviour
             }
         }
 
-        int round = InGameSync.instance.slaveWin + InGameSync.instance.masterWin;
-
         if (InGameSync.instance.res == GameResult.SlaveWin)
         {
             Time.timeScale = 0;
             runGame = false;
 
-            InGameSync.instance.slaveWin++;
-            InGameSync.instance.gameSeed = 0;
             if (InGameSync.instance.slaveWin >= 3)
             {
                 GameDecision();
@@ -155,8 +158,6 @@ public class MultiGameUI : MonoBehaviour
             Time.timeScale = 0;
             runGame = false;
 
-            InGameSync.instance.masterWin++;
-            InGameSync.instance.gameSeed = 0;
             if (InGameSync.instance.masterWin >= 3)//게임끝
             {
                 GameDecision();
