@@ -32,12 +32,6 @@ public class InGameSync : MonoBehaviourPunCallbacks
         set => UpdateState("gameSeed", value);
     }
 
-    public int round
-    {
-        get => GetState("round");
-        set => UpdateState("round", value);
-    }
-
     public GameResult res
     {
         get => (GameResult)GetState("res");
@@ -70,10 +64,14 @@ public class InGameSync : MonoBehaviourPunCallbacks
 
     public void SetSeed()
     {
-        if (IsMasterClient())
+        if (IsMasterClient() && gameSeed == 0)
             gameSeed = (int)(System.DateTime.Now.Ticks);
     }
 
+    private void Update()
+    {
+        Debug.Log(gameSeed);
+    }
 
     private int GetState(string key)
     {
