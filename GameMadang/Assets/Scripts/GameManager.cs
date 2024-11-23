@@ -8,8 +8,8 @@ public class GameManager : Singleton<GameManager>
     public int ClearStage=1;
     public int curStage;//현재 들어온 스테이지
 
-    public Action OnLife;
-    public Action OnScore;
+    public NoParaDel OnLife;
+    public NoParaDel OnScore;
 
     Coroutine coroutine;
     protected override void Awake()

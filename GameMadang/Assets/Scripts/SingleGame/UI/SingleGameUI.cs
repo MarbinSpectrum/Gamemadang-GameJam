@@ -30,8 +30,8 @@ public class SingleGameUI : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.Instance.OnLife += DecreaseLife;
-        GameManager.Instance.OnScore += StartCutScene;
+        GameManager.Instance.OnLife = DecreaseLife;
+        GameManager.Instance.OnScore = StartCutScene;
        
         stageSelectBtn.onClick.AddListener(() => SceneChange("StageSelect"));
         nextStageBtn.onClick.AddListener(() => SceneChange("SingleGame"));
@@ -52,8 +52,6 @@ public class SingleGameUI : MonoBehaviour
 
     private void SceneChange(string name)
     {
-        GameManager.Instance.OnLife -= DecreaseLife;
-        GameManager.Instance.OnScore -= StartCutScene;
         ObjectPool.Instance.ClearObj();
         
         SceneManager.LoadScene(name);
