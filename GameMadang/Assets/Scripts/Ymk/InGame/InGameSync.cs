@@ -65,12 +65,7 @@ public class InGameSync : MonoBehaviourPunCallbacks
     public void SetSeed()
     {
         if (IsMasterClient() && gameSeed == 0)
-            gameSeed = (int)(System.DateTime.Now.Ticks);
-    }
-
-    private void Update()
-    {
-        Debug.Log(gameSeed);
+            gameSeed = (int)(System.DateTime.Now.Second);
     }
 
     private int GetState(string key)

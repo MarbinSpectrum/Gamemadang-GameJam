@@ -1,19 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class UnitObj : MonoBehaviour
+public class MultiUnit : MonoBehaviourPunCallbacks
 {
-    public float    moveSpeed;
-    public float    maxDelay;
-    private float   moveDelay;
+    public float moveSpeed;
+    public float maxDelay;
+    private float moveDelay;
     private Vector2 moveDir;
     private int unitKey;
     private int gameSeed;
     private int time = 0;
 
     [SerializeField] private Rigidbody2D rigidbody2D;
-    [SerializeField] private TMPro.TextMeshProUGUI text;
 
-    public void SetUnit(int pUnitKey,int pGameSeed)
+    public void SetUnit(int pUnitKey, int pGameSeed)
     {
         unitKey = pUnitKey;
         gameSeed = pGameSeed;
@@ -23,11 +26,10 @@ public class UnitObj : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (text != null)
-            text.text = unitKey + "," + time;
+        if (PhotonNetwork.IsMasterClient == false)
+            return;
 
         time++;
-
         moveDelay -= Time.fixedDeltaTime;
         if (moveDelay <= 0)
         {
