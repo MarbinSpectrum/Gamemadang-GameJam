@@ -14,7 +14,9 @@ public class SpawnUnit : MonoBehaviour
         for (int i = 0; i < spawnCnt; i++)
         {
             Vector3 pos = new Vector3(Random.Range(-7.0f, 7.0f), Random.Range(-3.0f, 3.0f));
-            Instantiate(unitObj, pos, Quaternion.identity);
+            GameObject obj = ObjectPool.Instance.SpawnFromPool("Obj1");
+            obj.transform.position = pos;
+            //Instantiate(unitObj, pos, Quaternion.identity);
         }
 
         {

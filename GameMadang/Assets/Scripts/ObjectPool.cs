@@ -24,9 +24,9 @@ public class ObjectPool : Singleton<ObjectPool>
             Queue<GameObject> objectPool = new Queue<GameObject>();
             for (int i = 0; i < pool.size; i++)
             {
-                Vector3 pos = new Vector3(Random.Range(-7.0f, 7.0f), Random.Range(-3.0f, 3.0f));
-                GameObject obj = Instantiate(pool.prefab, pos, Quaternion.identity, this.transform);
-                obj.SetActive(true);//юс╫ц
+               // Vector3 pos = new Vector3(Random.Range(-7.0f, 7.0f), Random.Range(-3.0f, 3.0f));
+                GameObject obj = Instantiate(pool.prefab, this.transform);
+                obj.SetActive(false);
                 objectPool.Enqueue(obj);
             }
 
@@ -75,7 +75,7 @@ public class ObjectPool : Singleton<ObjectPool>
         return null;
     }
 
-    public void closeObj()
+    public void ClearObj()
     {
         for(int i=0; i<this.gameObject.transform.childCount; i++)
         {

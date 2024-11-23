@@ -9,7 +9,6 @@ public class GameManager : Singleton<GameManager>
     public Action OnLife;
     public Action OnScore;
 
-    public int round=1;
     Coroutine coroutine;
     public void UpdateLife()
     {
