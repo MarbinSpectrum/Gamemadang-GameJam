@@ -112,7 +112,7 @@ public class ServerMgr : MonoBehaviourPunCallbacks
                             hashtable.Add("goInGame", true);
                             newPlayer.SetCustomProperties(hashtable);
 
-                            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+                            UnityEngine.SceneManagement.SceneManager.LoadScene("MultiGame");
                             action = ServerAction.None;
 
                             //OnPlayerPropertiesUpdate로 응답이 올거임
@@ -235,7 +235,7 @@ public class ServerMgr : MonoBehaviourPunCallbacks
                                 PhotonNetwork.RemovePlayerCustomProperties(_removeProperties);
                                 InviteSystem.instance.Close_InviteWait();
 
-                                UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+                                UnityEngine.SceneManagement.SceneManager.LoadScene("MultiGame");
                             }
                         }
                     }
