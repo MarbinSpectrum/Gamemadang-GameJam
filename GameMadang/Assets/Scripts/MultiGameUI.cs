@@ -185,7 +185,7 @@ public class MultiGameUI : MonoBehaviour
 
     public void MainScene()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Title");
     }
    
 

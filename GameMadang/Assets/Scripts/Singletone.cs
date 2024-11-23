@@ -29,9 +29,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void Awake()
     {
-         if (instance != null && instance != this)
+        if (instance != null && instance.gameObject != this)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
             return;
         }
         DontDestroyOnLoad(gameObject);

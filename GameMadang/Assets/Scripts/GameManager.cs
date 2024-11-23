@@ -10,6 +10,10 @@ public class GameManager : Singleton<GameManager>
     public Action OnScore;
 
     Coroutine coroutine;
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     public void UpdateLife()
     {
         OnLife?.Invoke();
