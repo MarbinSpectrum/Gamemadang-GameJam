@@ -50,7 +50,7 @@ public class ObjectPool : Singleton<ObjectPool>
             poolDictionary[tag].Enqueue(obj);
             obj = null;
             Pool pool = FindPoolByTag(tag);
-            obj = Instantiate(pool.prefabObj);
+            obj = Instantiate(pool.prefabObj, transform);
             poolDictionary[tag].Enqueue(obj);
             obj.gameObject.SetActive(false); 
         }

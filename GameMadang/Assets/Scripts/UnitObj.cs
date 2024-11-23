@@ -11,8 +11,7 @@ public class UnitObj : MonoBehaviour
     private int time = 0;
 
     [SerializeField] private Rigidbody2D rigidbody2D;
-    [SerializeField] private Canvas canvas;
-    [SerializeField] private TMPro.TextMeshProUGUI seedText;
+   
 
     public void SetUnit(int pUnitKey,int pGameSeed)
     {
@@ -20,7 +19,6 @@ public class UnitObj : MonoBehaviour
         gameSeed = pGameSeed;
         time = 0;
 
-        canvas.worldCamera = Camera.main;
     }
 
     private void FixedUpdate()
@@ -55,6 +53,5 @@ public class UnitObj : MonoBehaviour
     private void SetSeed()
     {
         UnityEngine.Random.InitState(gameSeed + unitKey + time);
-        seedText.text = gameSeed + ", " + unitKey + " , " + time;
     }
 }
