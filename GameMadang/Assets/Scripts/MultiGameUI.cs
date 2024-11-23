@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-
+using Photon.Pun;
+using Photon.Realtime;
 
 public class MultiGameUI : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class MultiGameUI : MonoBehaviour
     [SerializeField]private GameObject[] masterUI;
     [SerializeField]private GameObject[] slaveUI;
 
-    [SerializeField]private GameObject[]scoreUI;
+    [SerializeField]private Image[] scoreUI;
 
     [Header("ResultUI")]
     [SerializeField]private GameObject winPanel;
@@ -22,27 +23,33 @@ public class MultiGameUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI countText;
     [SerializeField] private GameObject countPanel;
 
-    [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private TimeUI timeCheck;
-    int round;
+
+    private bool runGame = false;
 
     private void Awake()
     {
-        round = InGameSync.instance.round;
-
         GameManager.Instance.OnLife += CheckLife;
         GameManager.Instance.OnScore += CheckScore;
+
+        ServerMgr.instance.SetInGame();
+        PhotonNetwork.Instantiate("Mouse", Vector3.zero, Quaternion.identity);
 
         Init();
     }
 
     private void Init()
     {
+        InGameSync.instance.res = GameResult.None;
+
+        runGame = false;
+
         IEnumerator CreateUnitCor()
         {
             countPanel.SetActive(true);
             timeCheck.timeOver = false;
             timeCheck.InitTime();
+
             InGameSync.instance.masterHp = 3;
             InGameSync.instance.slaveHp = 3;
             InGameSync.instance.SetSeed();
@@ -51,23 +58,24 @@ public class MultiGameUI : MonoBehaviour
 
             GameManager.Instance.GameStart(countText);
             multiSpawn.CreateUnit(InGameSync.instance.gameSeed);
+
+            yield return new WaitUntil(() => Time.timeScale != 0);
+
+            runGame = true;
         }
 
         StartCoroutine(CreateUnitCor());
     }
 
-
     private void Update()
     {
-        //Debug.Log($"현재라운드 {round}");
-        //Debug.Log($"동기화라운드 {inGameSync.round}");
-        text.text = $"{InGameSync.instance.res}";
-        if (Time.timeScale!=0)
+        if (runGame)
         {
-            if (timeCheck.timeOver) InGameSync.instance.res = GameResult.Draw;
             UpdateUI();
+            CheckResult();
         }
     }
+
     public void CheckLife()
     {
         if (InGameSync.instance.IsMasterClient())
@@ -84,127 +92,109 @@ public class MultiGameUI : MonoBehaviour
         }
     }
 
-    
     public void CheckScore()//정답 클릭시 호출
     {
         if (InGameSync.instance.IsMasterClient())
-        {
             InGameSync.instance.res = GameResult.MasterWin;
-        }
         else
-        {
             InGameSync.instance.res = GameResult.SlaveWin;
-        }
     }
     
     private void UpdateUI() // 점수와 목숨 동기화
     {
         for(int i =0; i<masterUI.Length;i++)
-        {
-            if(i< InGameSync.instance.masterHp)
-            {
-                masterUI[i].SetActive(true);
-            }
-            else
-            {
-                masterUI[i].SetActive(false);
-            }
-        }
-
+            masterUI[i].SetActive(i < InGameSync.instance.masterHp);
         for (int i = 0; i < slaveUI.Length; i++)
-        {
-            if (i < InGameSync.instance.slaveHp)
-            {
-                slaveUI[i].SetActive(true);
-            }
-            else
-            {
-                slaveUI[i].SetActive(false);
-            }
-        }
+            slaveUI[i].SetActive(i < InGameSync.instance.slaveHp);
 
-        CheckResult();
+        for (int i = 0; i < InGameSync.instance.masterWin; i++)
+            scoreUI[i].color = Color.red;
+        for (int i = 0; i < InGameSync.instance.slaveWin; i++)
+            scoreUI[scoreUI.Length - i - 1].color = Color.blue;
 
     }
+
     private void CheckResult()
     {
         //시간 오버시
-        if(InGameSync.instance.res == GameResult.Draw)
+        if (timeCheck.timeOver)
         {
-            Time.timeScale = 0;
-            Init();
-            StartCoroutine(ReturnResult());
-            return;
+            InGameSync.instance.res = GameResult.Draw;
+            InGameSync.instance.gameSeed = 0;
+
+            if (InGameSync.instance.res == GameResult.Draw)
+            {
+                Time.timeScale = 0;
+                runGame = false;
+
+                StartCoroutine(ReturnResult());
+                return;
+            }
         }
 
-        if(InGameSync.instance.res == GameResult.SlaveWin)
-        {
-            InGameSync.instance.res = GameResult.SlaveWin;
-            scoreUI[round].GetComponent<Image>().color = Color.blue;
+        int round = InGameSync.instance.slaveWin + InGameSync.instance.masterWin;
 
+        if (InGameSync.instance.res == GameResult.SlaveWin)
+        {
             Time.timeScale = 0;
+            runGame = false;
 
             InGameSync.instance.slaveWin++;
-            round++;
-
-            //게임끝
-            if (round==5)
+            InGameSync.instance.gameSeed = 0;
+            if (InGameSync.instance.slaveWin >= 3)
             {
                 GameDecision();
                 return;
             }
 
-            Init();
             StartCoroutine(ReturnResult());
 
         }
         else if(InGameSync.instance.res == GameResult.MasterWin)
         {
-            InGameSync.instance.res = GameResult.MasterWin;
-            scoreUI[round].GetComponent<Image>().color = Color.red;
-
             Time.timeScale = 0;
+            runGame = false;
 
             InGameSync.instance.masterWin++;
-            round++;
-            if (round == 5)//게임끝
+            InGameSync.instance.gameSeed = 0;
+            if (InGameSync.instance.masterWin >= 3)//게임끝
             {
                 GameDecision();
                 return;
             }
 
-            Init();
             StartCoroutine(ReturnResult());
-
         }
-
     }
 
     private void GameDecision()
     {
-        if(InGameSync.instance.masterWin> InGameSync.instance.slaveWin)
+        if(InGameSync.instance.masterWin > InGameSync.instance.slaveWin)
         {
-            if (InGameSync.instance.IsMasterClient()) winPanel.SetActive(true);
-            else LosePanel.SetActive(true);
+            if (InGameSync.instance.IsMasterClient()) 
+                winPanel.SetActive(true);
+            else
+                LosePanel.SetActive(true);
         }
         else
         {
-            if (InGameSync.instance.IsMasterClient()) LosePanel.SetActive(true);
-            else winPanel.SetActive(true);
-        }
-       
+            if (InGameSync.instance.IsMasterClient()) 
+                LosePanel.SetActive(true);
+            else 
+                winPanel.SetActive(true);
+        }   
     }
+
     IEnumerator ReturnResult()
     {
         yield return new WaitForSecondsRealtime(1.5f);
-        InGameSync.instance.res = GameResult.None;
-
+        Init();
     }
 
     public void MainScene()
     {
-        SceneManager.LoadScene("Title");
+        ServerMgr.instance.LeaveInGame();
+        ObjectPool.Instance.ClearObj();
+        Time.timeScale = 1;
     }
-   
-
 }

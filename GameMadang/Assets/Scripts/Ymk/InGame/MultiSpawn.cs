@@ -8,6 +8,8 @@ public class MultiSpawn : MonoBehaviour
     {
         Application.targetFrameRate = 120;
 
+        ObjectPool.Instance.ClearObj();
+
         for (int i = 0; i < spawnCnt; i++)
         {
             UnityEngine.Random.InitState(seed + i);
@@ -19,6 +21,19 @@ public class MultiSpawn : MonoBehaviour
             Vector3 pos = new Vector3(x, y);
             UnitObj obj = ObjectPool.Instance.SpawnFromPool("Obj1");
             obj.SetUnit(i, seed);
+            obj.transform.position = pos;
+        }
+
+        {
+            UnityEngine.Random.InitState(seed);
+            float x = Random.Range(-7.0f, 7.0f);
+
+            UnityEngine.Random.InitState(seed + seed);
+            float y = Random.Range(-3.0f, 3.0f);
+
+            Vector3 pos = new Vector3(x, y);
+            UnitObj obj = ObjectPool.Instance.SpawnFromPool("Obj2");
+            obj.SetUnit(spawnCnt, seed);
             obj.transform.position = pos;
         }
     }
