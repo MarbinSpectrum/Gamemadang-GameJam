@@ -7,7 +7,7 @@ public class StageSelectUI : MonoBehaviour
 {
     public int stageCount;
     public Transform stageTransform;
-    private int curOpenStage;
+    private int curOpenStage;//열린 스테이지
     [SerializeField] private GameObject prefab;
     private GameObject[] stages ;
 
@@ -31,6 +31,7 @@ public class StageSelectUI : MonoBehaviour
             if (obj.TryGetComponent<Button>(out Button btn))
             {
                 btn.onClick.AddListener(() => SceneChange("SingleGame"));
+                btn.onClick.AddListener(() => GameManager.Instance.EnterStage(i+1));
                 TextMeshProUGUI text = btn.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
                 text.text = $"{i + 1}";
 
@@ -51,6 +52,7 @@ public class StageSelectUI : MonoBehaviour
             obj.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
+    
   
 
 }
