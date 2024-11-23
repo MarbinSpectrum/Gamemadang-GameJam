@@ -33,14 +33,6 @@ public class Mouse : MonoBehaviour
                     bGObject.OnMouse();
                 }
             }
-            else
-            {
-                if (bgObj != null)
-                {
-                    bgObj.OutMouse();
-                    bgObj = null;
-                }
-            }
 
             if(Input.GetMouseButtonDown(0)&& !EventSystem.current.IsPointerOverGameObject())
             {
@@ -52,9 +44,9 @@ public class Mouse : MonoBehaviour
                 }
                 else if (hit[i].collider.gameObject.layer == 6)
                 {
+                    if (i != hit.Length-1) continue;
                     GameManager.Instance.OnLife();
                     Debug.Log("¿À´ä");
-                    return;
 
                 }
             }

@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 286214226}
   - component: {fileID: 286214225}
   - component: {fileID: 286214224}
+  - component: {fileID: 286214228}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -378,6 +379,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &286214228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286214223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55b3d9fbad0584147836b78473d81528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageCount: 15
+  stageTransform: {fileID: 1087375515}
+  prefab: {fileID: 3583267427365988966, guid: 47cb8cd0c0d171d40af51e3e9197680e, type: 3}
+  backBtn: {fileID: 1996711714}
 --- !u!1 &545338267
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,7 +588,6 @@ GameObject:
   - component: {fileID: 1087375517}
   - component: {fileID: 1087375516}
   - component: {fileID: 1087375518}
-  - component: {fileID: 1087375519}
   m_Layer: 5
   m_Name: Stages
   m_TagString: Untagged
@@ -660,20 +676,6 @@ MonoBehaviour:
   m_Spacing: {x: 50, y: 50}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &1087375519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087375514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55b3d9fbad0584147836b78473d81528, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stageCount: 15
-  prefab: {fileID: 3583267427365988966, guid: 47cb8cd0c0d171d40af51e3e9197680e, type: 3}
 --- !u!1 &1878156557
 GameObject:
   m_ObjectHideFlags: 0

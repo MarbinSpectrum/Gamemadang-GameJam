@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.SocialPlatforms;
 
 
 public class SingleGameUI : MonoBehaviour
@@ -40,6 +41,13 @@ public class SingleGameUI : MonoBehaviour
         countDownPanel.SetActive(true);
         GameManager.Instance.GameStart(countDownText);
     }
+    private void Update()
+    {
+        if(Time.timeScale!=0)
+        {
+            if (time.timeOver) GameOver();
+        }
+    }
 
     private void SceneChange(string name)
     {
@@ -57,15 +65,20 @@ public class SingleGameUI : MonoBehaviour
 
         if (life == 0)
         {
-            Time.timeScale = 0;
-            GameOverPanel.SetActive(true);
+            GameOver();
         }
+    }
+    private void GameOver()
+    {
+        Time.timeScale = 0;
+        GameOverPanel.SetActive(true);
     }
 
     private void ClearStage()
     {
-       
         Time.timeScale = 0;
+        GameManager.Instance.ClearStage++;
+        SaveLoad.Instance.Save();
         GameClearPanel.SetActive(true);
     }
 
