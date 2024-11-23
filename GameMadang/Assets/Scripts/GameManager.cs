@@ -26,7 +26,7 @@ public class GameManager : Singleton<GameManager>
     public void GameStart(TextMeshProUGUI text)
     {
         Time.timeScale = 0f;
-       StartCoroutine(CountDown(text));
+        StartCoroutine(CountDown(text));
     }
 
     IEnumerator CountDown(TextMeshProUGUI text)

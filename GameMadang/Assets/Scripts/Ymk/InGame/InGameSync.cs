@@ -16,7 +16,7 @@ public class InGameSync : MonoBehaviourPunCallbacks
 
     public int round
     {
-        get => GetState("gameSeed");
+        get => GetState("round");
         set => UpdateState("round", value);
     }
 
@@ -81,8 +81,22 @@ public class InGameSync : MonoBehaviourPunCallbacks
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
+        string[] str = new string[] { "gameSeed", "round", "res", "masterHp", "slaveHp", "masterWin", "slaveWin" };
         foreach (var key in changedProps.Keys)
         {
+            bool check = false;
+            foreach (var checkStr in str)
+            {
+                if (key.ToString() == checkStr)
+                {
+                    check = true;
+                    break;
+                }
+            }
+
+            if (check == false)
+                continue;
+
             if (key is string propertyName && changedProps[propertyName] != null)
             {
                 //키값 업데이트

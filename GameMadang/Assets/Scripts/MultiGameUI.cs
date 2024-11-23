@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class MultiGameUI : MonoBehaviour
 {
-    [SerializeField]private InGameSync inGameSync;
+    [SerializeField] private InGameSync inGameSync;
+    [SerializeField] private MultiSpawn multiSpawn;
 
     [SerializeField]private GameObject[] masterUI;
     [SerializeField]private GameObject[] slaveUI;
@@ -42,7 +43,18 @@ public class MultiGameUI : MonoBehaviour
         timeCheck.timeOver = false;
         timeCheck.InitTime();
         GameManager.Instance.GameStart(countText);
+
+        IEnumerator CreateUnitCor()
+        {
+            yield return new WaitUntil(() => inGameSync.gameSeed != 0);
+            multiSpawn.CreateUnit(inGameSync.gameSeed);
+
+        }
+
+        StartCoroutine(CreateUnitCor());
     }
+
+
     private void Update()
     {
         //Debug.Log($"현재라운드 {round}");

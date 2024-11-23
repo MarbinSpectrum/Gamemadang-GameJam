@@ -7,6 +7,8 @@ using Photon.Realtime;
 public class MouseObj : MonoBehaviourPunCallbacks
 {
     [SerializeField] private SpriteRenderer sp;
+    [SerializeField] private Sprite master;
+    [SerializeField] private Sprite slave;
 
     private void FixedUpdate()
     {
@@ -19,16 +21,16 @@ public class MouseObj : MonoBehaviourPunCallbacks
         if (PhotonNetwork.MasterClient.UserId == ServerMgr.userId)
         {
             if (photonView.IsMine)
-                sp.color = Color.red;
+                sp.sprite = master;
             else
-                sp.color = Color.blue;
+                sp.sprite = slave;
         }
         else
         {
             if (photonView.IsMine)
-                sp.color = Color.blue;
+                sp.sprite = slave;
             else
-                sp.color = Color.red;
+                sp.sprite = master;
         }
     }
 }
