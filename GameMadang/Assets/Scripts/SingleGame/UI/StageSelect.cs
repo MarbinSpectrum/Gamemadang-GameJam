@@ -26,7 +26,7 @@ public class StageSelect : MonoBehaviour
 
             if (obj.TryGetComponent<Button>(out Button btn))
             {
-                TextMeshProUGUI text = btn.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI text = btn.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
                 text.text = $"{i + 1}";
 
                 if (i < curOpenStage) OpenStage(obj);
@@ -39,7 +39,7 @@ public class StageSelect : MonoBehaviour
         if (obj.TryGetComponent<Button>(out Button btn))
         {
             btn.interactable = true;
-            obj.transform.GetChild(1).gameObject.SetActive(false);
+            obj.transform.GetChild(0).gameObject.SetActive(false);
 
         }
     }
