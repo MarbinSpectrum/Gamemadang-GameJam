@@ -4086,11 +4086,11 @@ MonoBehaviour:
   - {fileID: 1077551124}
   - {fileID: 1431667790}
   scoreUI:
-  - {fileID: 1524996871}
-  - {fileID: 701996981}
-  - {fileID: 80117753}
-  - {fileID: 1936329210}
-  - {fileID: 1338478808}
+  - {fileID: 1524996873}
+  - {fileID: 701996983}
+  - {fileID: 80117755}
+  - {fileID: 1936329212}
+  - {fileID: 1338478810}
   winPanel: {fileID: 143690172}
   LosePanel: {fileID: 2056866247}
   countText: {fileID: 207872742}
