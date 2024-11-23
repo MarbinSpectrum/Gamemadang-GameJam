@@ -7,7 +7,7 @@ public class TimeUI : MonoBehaviour
 {
     public float time =0;
     private float curtime;
-
+    public bool timeOver;
     [SerializeField] private Image timeGage;
     [SerializeField] private TextMeshProUGUI timeTxt;
 
@@ -17,38 +17,26 @@ public class TimeUI : MonoBehaviour
     {
         curtime = time;
         wait= new WaitForSeconds(1f);
-       // StartCountDown();
     }
 
-    //public void StartCountDown()
-    //{
-    //    StartCoroutine(CountDown());
-    //}
-    //private IEnumerator CountDown()
-    //{
-    //    while (true)
-    //    {
-    //        curtime -= 1f;
-    //        timeTxt.text = CalTime(curtime);
+    public void InitTime()
+    {
+        curtime = time;
+    }
 
-    //        timeGage.fillAmount = (int)curtime / time;
-
-    //        if (curtime<=0)
-    //        {
-    //            break;
-    //        }
-    //        yield return wait;
-    //    }
-    //}
 
     private void Update()
     {
-        if (curtime <= 0) return;
+        if (curtime <= 0)
+        {
+            if (!timeOver) timeOver = true;
+            return;
+        }
 
         if (time > 0f)
         {
-            timeGage.fillAmount = curtime / time;
             timeTxt.text = CalTime(curtime);
+            timeGage.fillAmount = (int)curtime / time;
             curtime -= Time.deltaTime;
         }
     }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Mouse : MonoBehaviour
 {
@@ -41,7 +42,7 @@ public class Mouse : MonoBehaviour
                 }
             }
 
-            if(Input.GetMouseButtonDown(0))
+            if(Input.GetMouseButtonDown(0)&& !EventSystem.current.IsPointerOverGameObject())
             {
                 if (hit[i].collider.gameObject.layer == 9)
                 {

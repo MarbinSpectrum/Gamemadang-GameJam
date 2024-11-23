@@ -1,14 +1,13 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using Photon.Pun;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
-public class MultiGameUI : MonoBehaviourPun
+public class MultiGameUI : MonoBehaviour
 {
     [SerializeField]private InGameSync inGameSync;
-    [SerializeField]private Button mainButton;
 
     [SerializeField]private GameObject[] masterUI;
     [SerializeField]private GameObject[] slaveUI;
@@ -24,11 +23,13 @@ public class MultiGameUI : MonoBehaviourPun
     [SerializeField] private GameObject countPanel;
 
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private TimeUI timeCheck;
     int round;
 
     private void Awake()
     {
         round = inGameSync.round;
+
         GameManager.Instance.OnLife += CheckLife;
         GameManager.Instance.OnScore += CheckScore;
         Init();
@@ -38,7 +39,8 @@ public class MultiGameUI : MonoBehaviourPun
         inGameSync.masterHp = 3;
         inGameSync.slaveHp = 3;
         countPanel.SetActive(true);
-
+        timeCheck.timeOver = false;
+        timeCheck.InitTime();
         GameManager.Instance.GameStart(countText);
     }
     private void Update()
@@ -48,6 +50,7 @@ public class MultiGameUI : MonoBehaviourPun
         text.text = $"{inGameSync.res}";
         if (Time.timeScale!=0)
         {
+            if (timeCheck.timeOver) inGameSync.res = GameResult.Draw;
             UpdateUI();
         }
     }
@@ -107,6 +110,15 @@ public class MultiGameUI : MonoBehaviourPun
     }
     private void CheckResult()
     {
+        //시간 오버시
+        if(inGameSync.res == GameResult.Draw)
+        {
+            Time.timeScale = 0;
+            Init();
+            StartCoroutine(ReturnResult());
+            return;
+        }
+
         if(inGameSync.res == GameResult.SlaveWin||inGameSync.masterHp== 0 )
         {
             inGameSync.res = GameResult.SlaveWin;
@@ -169,6 +181,11 @@ public class MultiGameUI : MonoBehaviourPun
         yield return new WaitForSecondsRealtime(1.5f);
         inGameSync.res = GameResult.None;
 
+    }
+
+    public void MainScene()
+    {
+        SceneManager.LoadScene(2);
     }
    
 
