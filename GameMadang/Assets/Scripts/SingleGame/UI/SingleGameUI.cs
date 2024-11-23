@@ -24,11 +24,10 @@ public class SingleGameUI : MonoBehaviour
     [Header("CountDown")]
     [SerializeField] private TimeUI time;
 
-    int life;
+    int life=3;
 
     private void Awake()
     {
-        life = 3;
         GameManager.Instance.OnLife += DecreaseLife;
         GameManager.Instance.OnScore += ClearStage;
         //씬 번호 확정되고 전달
@@ -41,14 +40,13 @@ public class SingleGameUI : MonoBehaviour
         countDownPanel.SetActive(true);
         GameManager.Instance.GameStart(countDownText);
     }
-    private void Update()
-    {
-        Debug.Log(life);
-    }
 
     private void SceneChange(string name)
     {
         ObjectPool.Instance.ClearObj();
+        life = 3;
+        GameManager.Instance.OnLife -= DecreaseLife;
+        GameManager.Instance.OnScore -= ClearStage;
         SceneManager.LoadScene(name);
     }
 
@@ -59,15 +57,15 @@ public class SingleGameUI : MonoBehaviour
 
         if (life == 0)
         {
-           // Time.timeScale = 0;
+            Time.timeScale = 0;
             GameOverPanel.SetActive(true);
         }
-
     }
 
     private void ClearStage()
     {
-        //Time.timeScale = 0;
+       
+        Time.timeScale = 0;
         GameClearPanel.SetActive(true);
     }
 
