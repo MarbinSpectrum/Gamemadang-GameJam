@@ -32,6 +32,7 @@ public class GameManager : Singleton<GameManager>
     public void GameStart(TextMeshProUGUI text)
     {
         curMap = MapManager.Instance.GetMap(curStage);//시작전 맵 활성화
+        MapManager.Instance.UnitSpawn();
 
         Time.timeScale = 0f;
         curMap.SetActive(true);
