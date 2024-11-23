@@ -242,6 +242,8 @@ public class ServerMgr : MonoBehaviourPunCallbacks
                 }
                 break;
         }
+
+
     }
 
     public void PlayerInvite(string id)
