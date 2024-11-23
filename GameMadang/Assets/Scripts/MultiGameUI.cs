@@ -12,23 +12,19 @@ public class MultiGameUI : MonoBehaviourPun
     [SerializeField]private GameObject[] masterUI;
     [SerializeField]private GameObject[] slaveUI;
 
-    [SerializeField]private GameObject scoreUI;
+    [SerializeField]private GameObject[]scoreUI;
 
-    public TextMeshProUGUI text;
  
 
     private void Awake()
     {
-        //mainButton.onClick.
-        if (inGameSync.IsMasterClient())
-        {
-            inGameSync.masterHp = 3;
-        }
-        else
-        {
-            inGameSync.slaveHp = 3;
-        }
+        inGameSync.masterHp = 3;
+        inGameSync.slaveHp = 3;
         GameManager.Instance.OnLife += CheckLife;
+    }
+    private void Update()
+    {
+        UpdateUI();
     }
 
     public void CheckLife()
@@ -41,17 +37,9 @@ public class MultiGameUI : MonoBehaviourPun
         {
             inGameSync.slaveHp--;
         }
-        UpdateUI();
         
     }
-    private void Update()
-    {
-        text.text = $"{inGameSync.slaveHp}";
-        UpdateUI();
-        //if (inGameSync.masterHp == 0 || inGameSync.slaveHp == 0) 
-        //CheckResult();
-    }
-
+    
     private void UpdateUI()
     {
         for(int i =0; i<masterUI.Length;i++)
@@ -77,35 +65,39 @@ public class MultiGameUI : MonoBehaviourPun
                 slaveUI[i].SetActive(false);
             }
         }
-       
+
+        CheckResult();
+
     }
     private void CheckResult()
     {
+        Debug.Log(inGameSync.round);
         if(inGameSync.masterHp== 0)
         {
             inGameSync.res = GameResult.MasterWin;
             inGameSync.masterWin++;
-            scoreUI.transform.GetChild(inGameSync.round - 1).GetComponent<Image>().color = Color.red;
+            inGameSync.round++;
+
+            scoreUI[inGameSync.round+1].GetComponent<Image>().color = Color.red;
+
+            Time.timeScale = 0;
         }
         else if(inGameSync.slaveHp == 0)
         {
             inGameSync.res = GameResult.SlaveWin;
             inGameSync.slaveWin++;
-            scoreUI.transform.GetChild(inGameSync.round - 1).GetComponent<Image>().color = Color.blue;
+            inGameSync.round++;
+
+            scoreUI[inGameSync.round+1].GetComponent<Image>().color = Color.blue;
+            Time.timeScale = 0;
+
         }
 
-        if(inGameSync.round == 5)
+        if (inGameSync.round == 5)
         {
             //게임 결과 송출
             return;
         }
-        inGameSync.round++;
-    }
-
-    public void Test()
-    {
-        inGameSync.slaveHp--;
-
     }
 
 }
