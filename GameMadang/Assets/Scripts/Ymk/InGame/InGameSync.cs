@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class InGameSync : MonoBehaviourPunCallbacks
 {
-    private Dictionary<string, object> gameState = new Dictionary<string, object>();
+    private Dictionary<string, int> gameState = new Dictionary<string, int>();
 
     public int gameSeed
     {
@@ -69,11 +69,11 @@ public class InGameSync : MonoBehaviourPunCallbacks
     private void UpdateState(string key, object value)
     {
         if (gameState.ContainsKey(key))
-            gameState[key] = value;
+            gameState[key] = (int)value;
         else
-            gameState.Add(key, value);
+            gameState.Add(key, (int)value);
 
-        var hashtable = new ExitGames.Client.Photon.Hashtable { { key, value } };
+        var hashtable = new ExitGames.Client.Photon.Hashtable { { key, (int)value } };
         Player[] player = PhotonNetwork.PlayerListOthers;
         foreach (Player p in player)
             p.SetCustomProperties(hashtable);
@@ -86,7 +86,7 @@ public class InGameSync : MonoBehaviourPunCallbacks
             if (key is string propertyName && changedProps[propertyName] != null)
             {
                 //키값 업데이트
-                gameState[propertyName] = changedProps[propertyName];
+                gameState[propertyName] = (int)changedProps[propertyName];
             }
         }
     }
