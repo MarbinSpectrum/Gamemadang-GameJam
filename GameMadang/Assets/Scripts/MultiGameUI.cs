@@ -18,6 +18,10 @@ public class MultiGameUI : MonoBehaviourPun
     [SerializeField]private GameObject winPanel;
     [SerializeField]private GameObject LosePanel;
 
+    [Header("CountDown")]
+    [SerializeField] private TextMeshProUGUI countText;
+    [SerializeField] private GameObject countPanel;
+
     [SerializeField] private TextMeshProUGUI text;
     int round;
 
@@ -26,9 +30,12 @@ public class MultiGameUI : MonoBehaviourPun
         inGameSync.masterHp = 3;
         inGameSync.slaveHp = 3;
         round = inGameSync.round;
+        countPanel.SetActive(true);
         
         GameManager.Instance.OnLife += CheckLife;
         GameManager.Instance.OnScore += CheckScore;
+
+        GameManager.Instance.GameStart(countText);
     }
     private void Update()
     {

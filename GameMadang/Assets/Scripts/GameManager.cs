@@ -22,6 +22,7 @@ public class GameManager : Singleton<GameManager>
 
     public void GameStart(TextMeshProUGUI text)
     {
+        Time.timeScale = 0f;
         StartCoroutine(CountDown(text));
     }
 
@@ -32,6 +33,8 @@ public class GameManager : Singleton<GameManager>
             text.text = $"{i}";
             yield return new WaitForSecondsRealtime(1f);
         }
+
+        text.transform.parent.gameObject.SetActive(false);
         Time.timeScale = 1f;
     }
 
