@@ -7,7 +7,7 @@ public class InviteSystem : MonoBehaviour
 {
     public static InviteSystem instance;
 
-    [SerializeField] private InputField     friendUID;
+    [SerializeField] private TMPro.TMP_InputField     friendUID;
     [SerializeField] private InviteWait     inviteWait;
     [SerializeField] private InviteCheck    inviteCheck;
     [SerializeField] private Button         btn;

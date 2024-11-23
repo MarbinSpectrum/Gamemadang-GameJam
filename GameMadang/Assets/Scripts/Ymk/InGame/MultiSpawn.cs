@@ -13,7 +13,7 @@ public class MultiSpawn : MonoBehaviour
             UnityEngine.Random.InitState(seed + i);
             float x = Random.Range(-7.0f, 7.0f);
 
-            UnityEngine.Random.InitState(seed + i);
+            UnityEngine.Random.InitState(seed + seed + i);
             float y = Random.Range(-3.0f, 3.0f);
 
             Vector3 pos = new Vector3(x, y);

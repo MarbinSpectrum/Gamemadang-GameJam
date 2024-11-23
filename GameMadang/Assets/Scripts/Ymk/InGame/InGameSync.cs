@@ -71,16 +71,9 @@ public class InGameSync : MonoBehaviourPunCallbacks
     public void SetSeed()
     {
         if (IsMasterClient())
-            gameSeed = (int)(Time.time * 100f);
+            gameSeed = (int)(System.DateTime.Now.Ticks);
     }
 
-
-    [SerializeField] private TMPro.TextMeshProUGUI text;
-
-    private void Update()
-    {
-        text.text = gameSeed.ToString();
-    }
 
     private int GetState(string key)
     {

@@ -290,11 +290,11 @@ public class ServerMgr : MonoBehaviourPunCallbacks
         action = ServerAction.None;
         if(PhotonNetwork.IsMasterClient)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
         }
         else
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
             PhotonNetwork.LeaveRoom();
             loadBG.gameObject.SetActive(true);
             //OnConnectedToMaster함수로 응답이 올거임

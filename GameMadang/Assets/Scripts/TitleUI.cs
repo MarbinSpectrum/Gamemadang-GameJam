@@ -12,7 +12,6 @@ public class TitleUI : MonoBehaviour
     {
         gameExitBtn.onClick.AddListener(() => GameExit());
         singleGameBtn.onClick.AddListener(() => SeneChange("StageSelect"));
-        multiGameBtn.onClick.AddListener(() => SeneChange("Lobby"));
     }
     private void GameExit()
     {

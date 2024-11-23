@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class UId_UI : MonoBehaviour
 {
-    [SerializeField] private UnityEngine.UI.Text uidText;
+    [SerializeField] private TMPro.TextMeshProUGUI uidText;
 
     private bool flag = false;
 
