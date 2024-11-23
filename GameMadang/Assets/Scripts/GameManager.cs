@@ -6,6 +6,8 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public int ClearStage=1;
+    public int curStage;//현재 들어온 스테이지
+
     public Action OnLife;
     public Action OnScore;
 
@@ -40,5 +42,15 @@ public class GameManager : Singleton<GameManager>
         text.transform.parent.gameObject.SetActive(false);
         Time.timeScale = 1f;
     }
-   
+
+    public void EnterStage(int num)
+    {
+        curStage = num;
+    }
+
+    public bool CompareStage()
+    {
+        return false;
+    }
+
 }

@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-
 public class SingleGameUI : MonoBehaviour
 {
     [SerializeField] private GameObject[] lifeUI;
@@ -21,16 +20,18 @@ public class SingleGameUI : MonoBehaviour
     [SerializeField] private GameObject countDownPanel;
     [SerializeField] private TextMeshProUGUI countDownText;
 
-    [Header("CountDown")]
+    [Header("Time")]
     [SerializeField] private TimeUI time;
 
-    int life;
+    [Header("CutScene")]
+    [SerializeField] private GameObject timeline;
+
+    int life=3;
 
     private void Awake()
     {
-        life = 3;
         GameManager.Instance.OnLife += DecreaseLife;
-        GameManager.Instance.OnScore += ClearStage;
+        GameManager.Instance.OnScore += StartCutScene;
         //씬 번호 확정되고 전달
         stageSelectBtn.onClick.AddListener(() => SceneChange("StageSelect"));
         nextStageBtn.onClick.AddListener(() => SceneChange("SingleGame"));
@@ -43,12 +44,18 @@ public class SingleGameUI : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(life);
+        if(Time.timeScale!=0)
+        {
+            if (time.timeOver) GameOver();
+        }
     }
 
     private void SceneChange(string name)
     {
         ObjectPool.Instance.ClearObj();
+        life = 3;
+        GameManager.Instance.OnLife -= DecreaseLife;
+        GameManager.Instance.OnScore -= ClearStage;
         SceneManager.LoadScene(name);
     }
 
@@ -59,15 +66,22 @@ public class SingleGameUI : MonoBehaviour
 
         if (life == 0)
         {
-           // Time.timeScale = 0;
-            GameOverPanel.SetActive(true);
+            GameOver();
         }
-
     }
-
-    private void ClearStage()
+    private void GameOver()
     {
-        //Time.timeScale = 0;
+        Time.timeScale = 0;
+        GameOverPanel.SetActive(true);
+    }
+    private void StartCutScene()
+    {
+        timeline.SetActive(true);
+    }
+    public void ClearStage()
+    {
+        GameManager.Instance.ClearStage++;
+        SaveLoad.Instance.Save();
         GameClearPanel.SetActive(true);
     }
 

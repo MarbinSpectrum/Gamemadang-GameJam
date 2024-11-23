@@ -7,8 +7,14 @@ public class SaveData
 }
 public class SaveLoad : Singleton<SaveLoad>
 {
-    string path =Application.persistentDataPath;
+    string path ;
+    string fileName="save.json" ;
 
+    private void Start()
+    {
+        path = Path.Combine(Application.persistentDataPath,fileName);
+        Load();
+    }
     public void Save()
     {
         SaveData saveData = new SaveData();
