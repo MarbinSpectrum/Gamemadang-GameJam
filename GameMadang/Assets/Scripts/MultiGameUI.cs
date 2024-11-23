@@ -13,24 +13,31 @@ public class MultiGameUI : MonoBehaviourPun
     [SerializeField]private GameObject[] slaveUI;
 
     [SerializeField]private GameObject[]scoreUI;
+
     [Header("ResultUI")]
     [SerializeField]private GameObject winPanel;
     [SerializeField]private GameObject LosePanel;
 
- 
+    [SerializeField] private TextMeshProUGUI text;
+    int round;
 
     private void Awake()
     {
         inGameSync.masterHp = 3;
         inGameSync.slaveHp = 3;
-        inGameSync.round = 1;
+        round = inGameSync.round;
         
         GameManager.Instance.OnLife += CheckLife;
+        GameManager.Instance.OnScore += CheckScore;
     }
     private void Update()
     {
-        if(Time.timeScale!=0)
-        UpdateUI();
+        Debug.Log($"게임결과 {inGameSync.res}");
+        text.text = $"{inGameSync.res}";
+        if (Time.timeScale!=0)
+        {
+            UpdateUI();
+        }
     }
 
     public void CheckLife()
@@ -43,10 +50,20 @@ public class MultiGameUI : MonoBehaviourPun
         {
             inGameSync.slaveHp--;
         }
-        
+    }
+    public void CheckScore()//정답 클릭시 호출
+    {
+        if (inGameSync.IsMasterClient())
+        {
+            inGameSync.res = GameResult.MasterWin;
+        }
+        else
+        {
+            inGameSync.res = GameResult.SlaveWin;
+        }
     }
     
-    private void UpdateUI()
+    private void UpdateUI() // 점수와 목숨 동기화
     {
         for(int i =0; i<masterUI.Length;i++)
         {
@@ -71,20 +88,20 @@ public class MultiGameUI : MonoBehaviourPun
                 slaveUI[i].SetActive(false);
             }
         }
+        
 
-        if(inGameSync.slaveHp == 0||inGameSync.masterHp==0)
         CheckResult();
 
     }
     private void CheckResult()
     {
-        Debug.Log(inGameSync.round);
-        if(inGameSync.masterHp== 0)
+        Debug.Log($"라운드 {round}");
+        if(inGameSync.res == GameResult.SlaveWin||inGameSync.masterHp== 0 )
         {
-            inGameSync.res = GameResult.MasterWin;
+            inGameSync.res = GameResult.SlaveWin;
             inGameSync.masterWin++;
 
-            scoreUI[inGameSync.round-1].GetComponent<Image>().color = Color.red;
+            scoreUI[round].GetComponent<Image>().color = Color.blue;
 
             Time.timeScale = 0;
 
@@ -92,12 +109,12 @@ public class MultiGameUI : MonoBehaviourPun
             else winPanel.SetActive(true);
 
         }
-        else if(inGameSync.slaveHp == 0)
+        else if(inGameSync.res == GameResult.MasterWin||inGameSync.slaveHp == 0 )
         {
-            inGameSync.res = GameResult.SlaveWin;
+            inGameSync.res = GameResult.MasterWin;
             inGameSync.slaveWin++;
 
-            scoreUI[inGameSync.round-1].GetComponent<Image>().color = Color.blue;
+            scoreUI[round].GetComponent<Image>().color = Color.red;
             Time.timeScale = 0;
 
             if (inGameSync.IsMasterClient()) LosePanel.SetActive(true);

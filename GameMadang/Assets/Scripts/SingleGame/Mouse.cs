@@ -45,6 +45,7 @@ public class Mouse : MonoBehaviour
             {
                 if (hit[i].collider.gameObject.layer == 9)
                 {
+                    GameManager.Instance.OnScore();
                     Debug.Log("Á¤´ä");
                     return;
                 }
