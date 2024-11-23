@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.SocialPlatforms;
-
 
 public class SingleGameUI : MonoBehaviour
 {
@@ -22,15 +20,18 @@ public class SingleGameUI : MonoBehaviour
     [SerializeField] private GameObject countDownPanel;
     [SerializeField] private TextMeshProUGUI countDownText;
 
-    [Header("CountDown")]
+    [Header("Time")]
     [SerializeField] private TimeUI time;
+
+    [Header("CutScene")]
+    [SerializeField] private GameObject timeline;
 
     int life=3;
 
     private void Awake()
     {
         GameManager.Instance.OnLife += DecreaseLife;
-        GameManager.Instance.OnScore += ClearStage;
+        GameManager.Instance.OnScore += StartCutScene;
         //씬 번호 확정되고 전달
         stageSelectBtn.onClick.AddListener(() => SceneChange("StageSelect"));
         nextStageBtn.onClick.AddListener(() => SceneChange("SingleGame"));
@@ -73,10 +74,12 @@ public class SingleGameUI : MonoBehaviour
         Time.timeScale = 0;
         GameOverPanel.SetActive(true);
     }
-
-    private void ClearStage()
+    private void StartCutScene()
     {
-        Time.timeScale = 0;
+        timeline.SetActive(true);
+    }
+    public void ClearStage()
+    {
         GameManager.Instance.ClearStage++;
         SaveLoad.Instance.Save();
         GameClearPanel.SetActive(true);
