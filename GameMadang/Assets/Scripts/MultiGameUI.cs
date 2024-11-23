@@ -29,15 +29,20 @@ public class MultiGameUI : MonoBehaviour
 
     private int gameCnt = 0;
 
+    private GameObject myMouse = null;
+
     private void Awake()
     {
         GameManager.Instance.OnLife += CheckLife;
         GameManager.Instance.OnScore += CheckScore;
         if (PhotonNetwork.IsMasterClient)
+        {
             InGameSync.instance.gameSeed = 0;
+            InGameSync.instance.masterWin = 0;
+            InGameSync.instance.slaveWin = 0;
+        }
 
         ServerMgr.instance.SetInGame();
-        PhotonNetwork.Instantiate("Mouse", Vector3.zero, Quaternion.identity);
 
         Init();
     }
@@ -59,13 +64,14 @@ public class MultiGameUI : MonoBehaviour
             InGameSync.instance.SetSeed();
 
             yield return new WaitUntil(() => InGameSync.instance.gameSeed != 0);
-
             GameManager.Instance.GameStart(countText);
             multiSpawn.CreateUnit(InGameSync.instance.gameSeed + gameCnt);
             CreateMultiObj(InGameSync.instance.gameSeed + gameCnt);
 
             gameCnt += 2324234;
             yield return new WaitUntil(() => Time.timeScale != 0);
+            if (myMouse == null)
+                myMouse = PhotonNetwork.Instantiate("Mouse", Vector3.zero, Quaternion.identity);
             runGame = true;
         }
 
@@ -207,7 +213,7 @@ public class MultiGameUI : MonoBehaviour
 
     IEnumerator ReturnResult()
     {
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSecondsRealtime(1.5f);
         Init();
     }
 

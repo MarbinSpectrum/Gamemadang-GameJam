@@ -11,7 +11,6 @@ public class UnitObj : MonoBehaviour
     private int time = 0;
 
     [SerializeField] private Rigidbody2D rigidbody2D;
-    [SerializeField] private TMPro.TextMeshProUGUI text;
 
     public void SetUnit(int pUnitKey,int pGameSeed)
     {
@@ -23,9 +22,6 @@ public class UnitObj : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (text != null)
-            text.text = unitKey + "," + time;
-
         time++;
 
         moveDelay -= Time.fixedDeltaTime;
