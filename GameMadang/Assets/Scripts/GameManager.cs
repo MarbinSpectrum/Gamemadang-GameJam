@@ -11,8 +11,8 @@ public class GameManager : Singleton<GameManager>
     public GameObject curMap=null;
 
 
-    public Action OnLife;
-    public Action OnScore;
+    public NoParaDel OnLife;
+    public NoParaDel OnScore;
 
 
     Coroutine coroutine;

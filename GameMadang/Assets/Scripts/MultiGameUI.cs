@@ -33,8 +33,8 @@ public class MultiGameUI : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.Instance.OnLife += CheckLife;
-        GameManager.Instance.OnScore += CheckScore;
+        GameManager.Instance.OnLife = CheckLife;
+        GameManager.Instance.OnScore = CheckScore;
         if (PhotonNetwork.IsMasterClient)
             InGameSync.instance.gameSeed = 0;
         InGameSync.instance.masterWin = 0;
@@ -217,8 +217,6 @@ public class MultiGameUI : MonoBehaviour
 
     public void MainScene()
     {
-        GameManager.Instance.OnLife -= CheckLife;
-        GameManager.Instance.OnScore -= CheckScore;
         ServerMgr.instance.LeaveInGame();
         ObjectPool.Instance.ClearObj();
         multiUnit.gameObject.SetActive(false);
