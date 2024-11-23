@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager>
     public Action OnScore;
 
     public int round=1;
-
+    Coroutine coroutine;
     public void UpdateLife()
     {
         OnLife?.Invoke();
@@ -23,7 +23,7 @@ public class GameManager : Singleton<GameManager>
     public void GameStart(TextMeshProUGUI text)
     {
         Time.timeScale = 0f;
-        StartCoroutine(CountDown(text));
+       StartCoroutine(CountDown(text));
     }
 
     IEnumerator CountDown(TextMeshProUGUI text)
@@ -37,7 +37,5 @@ public class GameManager : Singleton<GameManager>
         text.transform.parent.gameObject.SetActive(false);
         Time.timeScale = 1f;
     }
-
-    
    
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.UI;
 using Photon.Pun;
 using TMPro;
@@ -27,24 +28,29 @@ public class MultiGameUI : MonoBehaviourPun
 
     private void Awake()
     {
-        inGameSync.masterHp = 3;
-        inGameSync.slaveHp = 3;
         round = inGameSync.round;
-        countPanel.SetActive(true);
-        
         GameManager.Instance.OnLife += CheckLife;
         GameManager.Instance.OnScore += CheckScore;
+        Init();
+    }
+    private void Init()
+    {
+        inGameSync.masterHp = 3;
+        inGameSync.slaveHp = 3;
+        countPanel.SetActive(true);
 
         GameManager.Instance.GameStart(countText);
     }
     private void Update()
     {
-        Debug.Log($"게임결과 {inGameSync.res}");
+        Debug.Log($"현재라운드 {round}");
+        //Debug.Log($"동기화라운드 {inGameSync.round}");
         text.text = $"{inGameSync.res}";
         if (Time.timeScale!=0)
         {
             UpdateUI();
         }
+        
     }
 
     public void CheckLife()
@@ -58,6 +64,8 @@ public class MultiGameUI : MonoBehaviourPun
             inGameSync.slaveHp--;
         }
     }
+
+    
     public void CheckScore()//정답 클릭시 호출
     {
         if (inGameSync.IsMasterClient())
@@ -95,44 +103,52 @@ public class MultiGameUI : MonoBehaviourPun
                 slaveUI[i].SetActive(false);
             }
         }
-        
 
         CheckResult();
 
     }
     private void CheckResult()
     {
-        Debug.Log($"라운드 {round}");
         if(inGameSync.res == GameResult.SlaveWin||inGameSync.masterHp== 0 )
         {
             inGameSync.res = GameResult.SlaveWin;
-            inGameSync.masterWin++;
-
             scoreUI[round].GetComponent<Image>().color = Color.blue;
 
-            Time.timeScale = 0;
+            Init();
 
-            if (inGameSync.IsMasterClient()) LosePanel.SetActive(true);
-            else winPanel.SetActive(true);
+            inGameSync.slaveWin++;
+            round++;
+            StartCoroutine(ReturnResult());
 
         }
-        else if(inGameSync.res == GameResult.MasterWin||inGameSync.slaveHp == 0 )
+        else if(inGameSync.res == GameResult.MasterWin || inGameSync.slaveHp == 0 )
         {
             inGameSync.res = GameResult.MasterWin;
-            inGameSync.slaveWin++;
-
             scoreUI[round].GetComponent<Image>().color = Color.red;
-            Time.timeScale = 0;
 
-            if (inGameSync.IsMasterClient()) LosePanel.SetActive(true);
-            else winPanel.SetActive(true);
+            Init();
+
+            round++;
+            inGameSync.masterWin++;
+            StartCoroutine(ReturnResult());
+
         }
 
         if (inGameSync.round == 5)
         {
             //게임 결과 송출
+            //if (inGameSync.IsMasterClient()) LosePanel.SetActive(true);
+            //else winPanel.SetActive(true);
             return;
         }
     }
+    IEnumerator ReturnResult()
+    {
+        Debug.Log(1);
+        yield return new WaitForSecondsRealtime(1f);
+        inGameSync.res = GameResult.None;
+
+    }
+   
 
 }
