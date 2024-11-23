@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ingaem_bg_stage_4_1_close_0: -6357088563530849879
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

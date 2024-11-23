@@ -1,15 +1,19 @@
 using System;
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
     public int ClearStage=1;
     public int curStage;//현재 들어온 스테이지
+    public GameObject curMap=null;
+
 
     public Action OnLife;
     public Action OnScore;
+
 
     Coroutine coroutine;
     protected override void Awake()
@@ -27,7 +31,10 @@ public class GameManager : Singleton<GameManager>
 
     public void GameStart(TextMeshProUGUI text)
     {
+        curMap = MapManager.Instance.GetMap(curStage);//시작전 맵 활성화
+
         Time.timeScale = 0f;
+        curMap.SetActive(true);
         StartCoroutine(CountDown(text));
     }
 

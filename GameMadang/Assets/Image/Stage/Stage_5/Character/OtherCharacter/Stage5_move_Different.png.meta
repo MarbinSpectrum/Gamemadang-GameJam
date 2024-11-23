@@ -259,7 +259,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Stage5_move_Different_0: 7750284828371986052
+      Stage5_move_Different_1: 7727624380133763687
+      Stage5_move_Different_2: -5173044388865319684
+      Stage5_move_Different_3: 3866128024377686961
+      Stage5_move_Different_4: -6108102228218882662
+      Stage5_move_Different_5: -3072435069836559144
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -25,7 +25,7 @@ public class Mouse : MonoBehaviour
 
         for(int i=0; i<hit.Length; i++)
         {
-            if (hit[i].collider.gameObject.layer == 8)
+            if (hit[i].collider.gameObject.layer == 8 && !EventSystem.current.IsPointerOverGameObject())
             {
                 if (hit[i].collider.gameObject.TryGetComponent<BGObject>(out BGObject bGObject))
                 {

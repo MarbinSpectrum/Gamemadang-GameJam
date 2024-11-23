@@ -55,8 +55,15 @@ public class SingleGameUI : MonoBehaviour
         GameManager.Instance.OnLife -= DecreaseLife;
         GameManager.Instance.OnScore -= StartCutScene;
         ObjectPool.Instance.ClearObj();
-        
+
+        if (GameManager.Instance.curMap != null)
+        {
+            GameManager.Instance.curMap.SetActive(false);
+            GameManager.Instance.curMap = null;
+        }
         SceneManager.LoadScene(name);
+
+
     }
 
     private void DecreaseLife()
