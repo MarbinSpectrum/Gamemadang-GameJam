@@ -2,7 +2,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class MainStart : MonoBehaviour
+public class MultiStart : MonoBehaviour
 {
     private void Start()
     {

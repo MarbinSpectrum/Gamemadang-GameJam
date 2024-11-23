@@ -7,26 +7,25 @@ public class ObjectPool : Singleton<ObjectPool>
     public class Pool
     {
         public string tag;
-        public GameObject prefab;
+        public UnitObj prefabObj;
         public int size;
     }
 
-    public List<Pool> pools;
-    public Dictionary<string, Queue<GameObject>> poolDictionary;
-    
+    [SerializeField] private List<Pool> pools = new List<Pool>();
+    private Dictionary<string, Queue<UnitObj>> poolDictionary = new Dictionary<string, Queue<UnitObj>>();
+
     protected override void Awake()
     {
         base.Awake();
 
-        poolDictionary = new Dictionary<string, Queue<GameObject>>();
         foreach (var pool in pools)
         {
-            Queue<GameObject> objectPool = new Queue<GameObject>();
+            Queue<UnitObj> objectPool = new Queue<UnitObj>();
             for (int i = 0; i < pool.size; i++)
             {
-               // Vector3 pos = new Vector3(Random.Range(-7.0f, 7.0f), Random.Range(-3.0f, 3.0f));
-                GameObject obj = Instantiate(pool.prefab, this.transform);
-                obj.SetActive(false);
+                // Vector3 pos = new Vector3(Random.Range(-7.0f, 7.0f), Random.Range(-3.0f, 3.0f));
+                UnitObj obj = Instantiate(pool.prefabObj, this.transform);
+                obj.gameObject.SetActive(false);
                 objectPool.Enqueue(obj);
             }
 
@@ -34,32 +33,32 @@ public class ObjectPool : Singleton<ObjectPool>
         }
     }
 
-    public GameObject SpawnFromPool(string tag)
+    public UnitObj SpawnFromPool(string tag)
     {
         if (!poolDictionary.ContainsKey(tag))
             return null;
 
-        if (!poolDictionary[tag].TryDequeue(out GameObject obj))
+        if (!poolDictionary[tag].TryDequeue(out UnitObj obj))
         {
             Pool pool = FindPoolByTag(tag);
-            obj = Instantiate(pool.prefab, transform);
+            obj = Instantiate(pool.prefabObj, transform);
             poolDictionary[tag].Enqueue(obj);
-            obj.SetActive(false);
+            obj.gameObject.SetActive(false);
         }
-        else if (obj.activeInHierarchy)
+        else if (obj.gameObject.activeInHierarchy)
         {
             poolDictionary[tag].Enqueue(obj);
             obj = null;
             Pool pool = FindPoolByTag(tag);
-            obj = Instantiate(pool.prefab);
+            obj = Instantiate(pool.prefabObj);
             poolDictionary[tag].Enqueue(obj);
-            obj.SetActive(false); 
+            obj.gameObject.SetActive(false); 
         }
         else
         {
             poolDictionary[tag].Enqueue(obj);
         }
-        obj.SetActive(true);
+        obj.gameObject.SetActive(true);
         return obj;
     }
 
@@ -77,7 +76,7 @@ public class ObjectPool : Singleton<ObjectPool>
 
     public void ClearObj()
     {
-        for(int i=0; i<this.gameObject.transform.childCount; i++)
+        for (int i = 0; i < this.gameObject.transform.childCount; i++)
         {
             this.gameObject.transform.GetChild(i).gameObject.SetActive(false);
         }

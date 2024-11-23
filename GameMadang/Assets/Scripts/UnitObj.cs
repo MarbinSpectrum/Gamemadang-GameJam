@@ -6,19 +6,39 @@ public class UnitObj : MonoBehaviour
     public float    maxDelay;
     private float   moveDelay;
     private Vector2 moveDir;
-    [SerializeField] private Rigidbody2D rigidbody2D;
+    private int unitKey;
+    private int gameSeed;
+    private int time = 0;
 
-    private void Update()
+    [SerializeField] private Rigidbody2D rigidbody2D;
+    [SerializeField] private Canvas canvas;
+    [SerializeField] private TMPro.TextMeshProUGUI seedText;
+
+    public void SetUnit(int pUnitKey,int pGameSeed)
     {
-        moveDelay -= Time.deltaTime;
+        unitKey = pUnitKey;
+        gameSeed = pGameSeed;
+        time = 0;
+
+        canvas.worldCamera = Camera.main;
+    }
+
+    private void FixedUpdate()
+    {
+        time++;
+
+        moveDelay -= Time.fixedDeltaTime;
         if (moveDelay <= 0)
         {
             //이동 방향 변경
+
+            SetSeed();
             moveDelay = UnityEngine.Random.Range(maxDelay / 2f, maxDelay);
 
+            SetSeed();
             var quaternion = Quaternion.Euler(0, 0, UnityEngine.Random.Range(0, 360));
-            Vector2 newDirection = quaternion * Vector2.right;
 
+            Vector2 newDirection = quaternion * Vector2.right;
             moveDir = newDirection;
         }
 
@@ -30,5 +50,11 @@ public class UnitObj : MonoBehaviour
     {
         if (collision.transform.gameObject.layer == LayerMask.NameToLayer("Wall"))
             moveDir = -moveDir;
+    }
+
+    private void SetSeed()
+    {
+        UnityEngine.Random.InitState(gameSeed + unitKey + time);
+        seedText.text = gameSeed + ", " + unitKey + " , " + time;
     }
 }
