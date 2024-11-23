@@ -24,7 +24,7 @@ public class SingleGameUI : MonoBehaviour
     [SerializeField] private TimeUI time;
 
     [Header("CutScene")]
-    [SerializeField] private GameObject timeline;
+    [SerializeField] private GameObject timeLine;
 
     int life=3;
 
@@ -32,7 +32,7 @@ public class SingleGameUI : MonoBehaviour
     {
         GameManager.Instance.OnLife += DecreaseLife;
         GameManager.Instance.OnScore += StartCutScene;
-        //씬 번호 확정되고 전달
+       
         stageSelectBtn.onClick.AddListener(() => SceneChange("StageSelect"));
         nextStageBtn.onClick.AddListener(() => SceneChange("SingleGame"));
         retryBtn.onClick.AddListener(() => SceneChange("SingleGame"));
@@ -52,10 +52,10 @@ public class SingleGameUI : MonoBehaviour
 
     private void SceneChange(string name)
     {
-        ObjectPool.Instance.ClearObj();
-        life = 3;
         GameManager.Instance.OnLife -= DecreaseLife;
-        GameManager.Instance.OnScore -= ClearStage;
+        GameManager.Instance.OnScore -= StartCutScene;
+        ObjectPool.Instance.ClearObj();
+        
         SceneManager.LoadScene(name);
     }
 
@@ -76,11 +76,21 @@ public class SingleGameUI : MonoBehaviour
     }
     private void StartCutScene()
     {
-        timeline.SetActive(true);
+        timeLine.SetActive(true);
     }
     public void ClearStage()
     {
-        GameManager.Instance.ClearStage++;
+       
+        if(GameManager.Instance.CompareStage())//최신 스테이지를 진행했을때만 
+        {
+            GameManager.Instance.ClearStage++;
+            GameManager.Instance.curStage++;
+        }
+        else
+        {
+            GameManager.Instance.curStage++;
+        }
+
         SaveLoad.Instance.Save();
         GameClearPanel.SetActive(true);
     }

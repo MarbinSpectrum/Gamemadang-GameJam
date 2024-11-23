@@ -50,6 +50,7 @@ public class GameManager : Singleton<GameManager>
 
     public bool CompareStage()
     {
+        if(curStage==ClearStage) return true;
         return false;
     }
 

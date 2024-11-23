@@ -31,7 +31,7 @@ public class StageSelectUI : MonoBehaviour
             if (obj.TryGetComponent<Button>(out Button btn))
             {
                 btn.onClick.AddListener(() => SceneChange("SingleGame"));
-                btn.onClick.AddListener(() => GameManager.Instance.EnterStage(i+1));
+                btn.gameObject.GetComponent<StageBtn>().num = i + 1;
                 TextMeshProUGUI text = btn.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
                 text.text = $"{i + 1}";
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1604639243610450391}
   - component: {fileID: 2827494129347911997}
   - component: {fileID: 2318221436343254046}
+  - component: {fileID: 5534845422151305189}
   m_Layer: 5
   m_Name: StageBtn
   m_TagString: Untagged
@@ -117,11 +118,23 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2827494129347911997}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5534845422151305189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583267427365988966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf2a1bfdeb05aae43b1aa809d223468c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5643971837719847767
 GameObject:
   m_ObjectHideFlags: 0
