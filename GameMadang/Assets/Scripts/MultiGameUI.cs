@@ -13,6 +13,9 @@ public class MultiGameUI : MonoBehaviourPun
     [SerializeField]private GameObject[] slaveUI;
 
     [SerializeField]private GameObject[]scoreUI;
+    [Header("ResultUI")]
+    [SerializeField]private GameObject winPanel;
+    [SerializeField]private GameObject LosePanel;
 
  
 
@@ -20,10 +23,13 @@ public class MultiGameUI : MonoBehaviourPun
     {
         inGameSync.masterHp = 3;
         inGameSync.slaveHp = 3;
+        inGameSync.round = 1;
+        
         GameManager.Instance.OnLife += CheckLife;
     }
     private void Update()
     {
+        if(Time.timeScale!=0)
         UpdateUI();
     }
 
@@ -66,6 +72,7 @@ public class MultiGameUI : MonoBehaviourPun
             }
         }
 
+        if(inGameSync.slaveHp == 0||inGameSync.masterHp==0)
         CheckResult();
 
     }
@@ -76,21 +83,25 @@ public class MultiGameUI : MonoBehaviourPun
         {
             inGameSync.res = GameResult.MasterWin;
             inGameSync.masterWin++;
-            inGameSync.round++;
 
-            scoreUI[inGameSync.round+1].GetComponent<Image>().color = Color.red;
+            scoreUI[inGameSync.round-1].GetComponent<Image>().color = Color.red;
 
             Time.timeScale = 0;
+
+            if (inGameSync.IsMasterClient()) LosePanel.SetActive(true);
+            else winPanel.SetActive(true);
+
         }
         else if(inGameSync.slaveHp == 0)
         {
             inGameSync.res = GameResult.SlaveWin;
             inGameSync.slaveWin++;
-            inGameSync.round++;
 
-            scoreUI[inGameSync.round+1].GetComponent<Image>().color = Color.blue;
+            scoreUI[inGameSync.round-1].GetComponent<Image>().color = Color.blue;
             Time.timeScale = 0;
 
+            if (inGameSync.IsMasterClient()) LosePanel.SetActive(true);
+            else winPanel.SetActive(true);
         }
 
         if (inGameSync.round == 5)
