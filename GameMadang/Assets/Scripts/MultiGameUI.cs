@@ -43,16 +43,14 @@ public class MultiGameUI : MonoBehaviourPun
     }
     private void Update()
     {
-        Debug.Log($"현재라운드 {round}");
+        //Debug.Log($"현재라운드 {round}");
         //Debug.Log($"동기화라운드 {inGameSync.round}");
         text.text = $"{inGameSync.res}";
         if (Time.timeScale!=0)
         {
             UpdateUI();
         }
-        
     }
-
     public void CheckLife()
     {
         if (inGameSync.IsMasterClient())
@@ -114,10 +112,19 @@ public class MultiGameUI : MonoBehaviourPun
             inGameSync.res = GameResult.SlaveWin;
             scoreUI[round].GetComponent<Image>().color = Color.blue;
 
-            Init();
+            Time.timeScale = 0;
 
             inGameSync.slaveWin++;
             round++;
+
+            //게임끝
+            if (round==5)
+            {
+                GameDecision();
+                return;
+            }
+
+            Init();
             StartCoroutine(ReturnResult());
 
         }
@@ -126,26 +133,40 @@ public class MultiGameUI : MonoBehaviourPun
             inGameSync.res = GameResult.MasterWin;
             scoreUI[round].GetComponent<Image>().color = Color.red;
 
-            Init();
+            Time.timeScale = 0;
 
-            round++;
             inGameSync.masterWin++;
+            round++;
+            if (round == 5)//게임끝
+            {
+                GameDecision();
+                return;
+            }
+
+            Init();
             StartCoroutine(ReturnResult());
 
         }
 
-        if (inGameSync.round == 5)
+    }
+
+    private void GameDecision()
+    {
+        if(inGameSync.masterWin>inGameSync.slaveWin)
         {
-            //게임 결과 송출
-            //if (inGameSync.IsMasterClient()) LosePanel.SetActive(true);
-            //else winPanel.SetActive(true);
-            return;
+            if (inGameSync.IsMasterClient()) winPanel.SetActive(true);
+            else LosePanel.SetActive(true);
         }
+        else
+        {
+            if (inGameSync.IsMasterClient()) LosePanel.SetActive(true);
+            else winPanel.SetActive(true);
+        }
+       
     }
     IEnumerator ReturnResult()
     {
-        Debug.Log(1);
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(1.5f);
         inGameSync.res = GameResult.None;
 
     }
