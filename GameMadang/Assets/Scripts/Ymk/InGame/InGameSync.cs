@@ -74,7 +74,9 @@ public class InGameSync : MonoBehaviourPunCallbacks
             gameState.Add(key, value);
 
         var hashtable = new ExitGames.Client.Photon.Hashtable { { key, value } };
-        PhotonNetwork.CurrentRoom.SetCustomProperties(hashtable);
+        Player[] player = PhotonNetwork.PlayerListOthers;
+        foreach (Player p in player)
+            p.SetCustomProperties(hashtable);
     }
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
