@@ -10,43 +10,43 @@ public class InGameSync : MonoBehaviourPunCallbacks
 
     public int gameSeed
     {
-        get => GetState<int>("gameSeed");
+        get => GetState("gameSeed");
         set => UpdateState("gameSeed", value);
     }
 
     public int round
     {
-        get => GetState<int>("gameSeed");
+        get => GetState("gameSeed");
         set => UpdateState("round", value);
     }
 
     public GameResult res
     {
-        get => GetState<GameResult>("res");
+        get => (GameResult)GetState("res");
         set => UpdateState("res", value);
     }
 
     public int masterHp
     {
-        get => GetState<int>("masterHp");
+        get => GetState("masterHp");
         set => UpdateState("masterHp", value);
     }
 
     public int slaveHp
     {
-        get => GetState<int>("slaveHp");
+        get => GetState("slaveHp");
         set => UpdateState("slaveHp", value);
     }
 
     public int masterWin
     {
-        get => GetState<int>("masterWin");
+        get => GetState("masterWin");
         set => UpdateState("masterWin", value);
     }
 
     public int slaveWin
     {
-        get => GetState<int>("slaveWin");
+        get => GetState("slaveWin");
         set => UpdateState("slaveWin", value);
     }
 
@@ -59,11 +59,11 @@ public class InGameSync : MonoBehaviourPunCallbacks
         }
     }
 
-    private T GetState<T>(string key)
+    private int GetState(string key)
     {
-        if (gameState.TryGetValue(key, out var value) && value is T castValue)
-            return castValue;
-        return default;
+        if (gameState.ContainsKey(key))
+            return gameState[key];
+        return 0;
     }
 
     private void UpdateState(string key, object value)
