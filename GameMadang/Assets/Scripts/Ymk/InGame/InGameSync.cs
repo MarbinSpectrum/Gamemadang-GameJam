@@ -6,6 +6,24 @@ using System.Collections.Generic;
 
 public class InGameSync : MonoBehaviourPunCallbacks
 {
+    public static InGameSync instance;
+    private static bool init = false;
+
+    private void Awake()
+    {
+        if (init == false)
+        {
+            init = true;
+
+            instance = this;
+            DontDestroyOnLoad(instance);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private Dictionary<string, int> gameState = new Dictionary<string, int>();
 
     public int gameSeed
@@ -50,13 +68,18 @@ public class InGameSync : MonoBehaviourPunCallbacks
         set => UpdateState("slaveWin", value);
     }
 
-    public void Start()
+    public void SetSeed()
     {
         if (IsMasterClient())
-        {
             gameSeed = (int)(Time.time * 100f);
-            round = 1;
-        }
+    }
+
+
+    [SerializeField] private TMPro.TextMeshProUGUI text;
+
+    private void Update()
+    {
+        text.text = gameSeed.ToString();
     }
 
     private int GetState(string key)
@@ -81,26 +104,13 @@ public class InGameSync : MonoBehaviourPunCallbacks
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
-        string[] str = new string[] { "gameSeed", "round", "res", "masterHp", "slaveHp", "masterWin", "slaveWin" };
         foreach (var key in changedProps.Keys)
         {
-            bool check = false;
-            foreach (var checkStr in str)
-            {
-                if (key.ToString() == checkStr)
-                {
-                    check = true;
-                    break;
-                }
-            }
-
-            if (check == false)
-                continue;
-
-            if (key is string propertyName && changedProps[propertyName] != null)
+            string propertyName = key.ToString();
+            if(changedProps[propertyName] != null && changedProps[propertyName] is int keyValue)
             {
                 //키값 업데이트
-                gameState[propertyName] = (int)changedProps[propertyName];
+                gameState[propertyName] = keyValue;
             }
         }
     }
