@@ -8,8 +8,6 @@ public class GameManager : Singleton<GameManager>
 {
     public int ClearStage=1;
     public int curStage;//현재 들어온 스테이지
-    public GameObject curMap=null;
-
 
     public NoParaDel OnLife;
     public NoParaDel OnScore;
@@ -31,11 +29,7 @@ public class GameManager : Singleton<GameManager>
 
     public void GameStart(TextMeshProUGUI text)
     {
-        curMap = MapManager.Instance.GetMap(curStage);//시작전 맵 활성화
-        MapManager.Instance.UnitSpawn();
-
         Time.timeScale = 0f;
-        curMap.SetActive(true);
         StartCoroutine(CountDown(text));
     }
 

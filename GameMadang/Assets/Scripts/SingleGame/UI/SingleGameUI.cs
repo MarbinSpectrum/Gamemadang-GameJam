@@ -26,6 +26,8 @@ public class SingleGameUI : MonoBehaviour
     [Header("CutScene")]
     [SerializeField] private GameObject timeLine;
 
+    private GameObject curMap=null;
+
     int life=3;
 
     private void Awake()
@@ -41,6 +43,9 @@ public class SingleGameUI : MonoBehaviour
 
         countDownPanel.SetActive(true);
         GameManager.Instance.GameStart(countDownText);
+
+        MapManager.Instance.ActiveMap();
+        
     }
     private void Update()
     {
@@ -52,15 +57,10 @@ public class SingleGameUI : MonoBehaviour
 
     private void SceneChange(string name)
     {
+        MapManager.Instance.CloseMap();
+
         ObjectPool.Instance.ClearObj();
-
-        if (GameManager.Instance.curMap != null)
-        {
-            GameManager.Instance.curMap.SetActive(false);
-            GameManager.Instance.curMap = null;
-        }
         SceneManager.LoadScene(name);
-
 
     }
 
@@ -95,7 +95,7 @@ public class SingleGameUI : MonoBehaviour
         {
             GameManager.Instance.curStage++;
         }
-
+       
         SaveLoad.Instance.Save();
         GameClearPanel.SetActive(true);
     }
