@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using TMPro;
 
 
 public class MultiGameUI : MonoBehaviourPun
@@ -8,51 +9,95 @@ public class MultiGameUI : MonoBehaviourPun
     [SerializeField]private InGameSync inGameSync;
     [SerializeField]private Button mainButton;
 
-    [SerializeField]private GameObject masterUI;
-    [SerializeField]private GameObject slaveUI;
-    int masterHP=3;
-    int slaveHP=3;
+    [SerializeField]private GameObject[] masterUI;
+    [SerializeField]private GameObject[] slaveUI;
+
+    [SerializeField]private GameObject[]scoreUI;
+
+ 
 
     private void Awake()
     {
-        //mainButton.onClick.
+        inGameSync.masterHp = 3;
+        inGameSync.slaveHp = 3;
         GameManager.Instance.OnLife += CheckLife;
+    }
+    private void Update()
+    {
+        UpdateUI();
     }
 
     public void CheckLife()
     {
-        if(inGameSync.IsMasterClient())
+        if (inGameSync.IsMasterClient())
         {
-            masterHP--;
             inGameSync.masterHp--;
-            if (masterHP==0)
-            {
-                inGameSync.res = GameResult.SlaveWin;
-            }
         }
         else
         {
-            slaveHP--;
             inGameSync.slaveHp--;
-
-            if (slaveHP == 0)
-            {
-                inGameSync.res = GameResult.MasterWin;
-            }
         }
-        UpdateUI();
+        
     }
-
+    
     private void UpdateUI()
     {
-        masterUI.transform.GetChild(masterHP).gameObject.SetActive(false);
-        slaveUI.transform.GetChild(slaveHP).gameObject.SetActive(false);
+        for(int i =0; i<masterUI.Length;i++)
+        {
+            if(i< inGameSync.masterHp)
+            {
+                masterUI[i].SetActive(true);
+            }
+            else
+            {
+                masterUI[i].SetActive(false);
+            }
+        }
+
+        for (int i = 0; i < slaveUI.Length; i++)
+        {
+            if (i < inGameSync.slaveHp)
+            {
+                slaveUI[i].SetActive(true);
+            }
+            else
+            {
+                slaveUI[i].SetActive(false);
+            }
+        }
+
+        CheckResult();
 
     }
-
-    public void Test()
+    private void CheckResult()
     {
-        inGameSync.slaveHp--;
+        Debug.Log(inGameSync.round);
+        if(inGameSync.masterHp== 0)
+        {
+            inGameSync.res = GameResult.MasterWin;
+            inGameSync.masterWin++;
+            inGameSync.round++;
+
+            scoreUI[inGameSync.round+1].GetComponent<Image>().color = Color.red;
+
+            Time.timeScale = 0;
+        }
+        else if(inGameSync.slaveHp == 0)
+        {
+            inGameSync.res = GameResult.SlaveWin;
+            inGameSync.slaveWin++;
+            inGameSync.round++;
+
+            scoreUI[inGameSync.round+1].GetComponent<Image>().color = Color.blue;
+            Time.timeScale = 0;
+
+        }
+
+        if (inGameSync.round == 5)
+        {
+            //게임 결과 송출
+            return;
+        }
     }
 
 }

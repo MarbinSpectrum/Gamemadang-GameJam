@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30d968c293ea5146b89162a75c3684c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeUI: {fileID: 116526872}
   stageSelectBtn: {fileID: 141459783}
   nextStageBtn: {fileID: 2073937442}
   retryBtn: {fileID: 258726144}
@@ -1178,7 +1179,7 @@ MonoBehaviour:
   pools:
   - tag: Obj1
     prefab: {fileID: 5495708477319675596, guid: bcca31c67850c0d4bbb8c0bd4168bede, type: 3}
-    size: 100
+    size: 1
   - tag: Obj2
     prefab: {fileID: 5495708477319675596, guid: 70a899f236ad34f4a9be865907697d3b, type: 3}
     size: 1
@@ -1500,7 +1501,7 @@ GameObject:
   - component: {fileID: 718226357}
   - component: {fileID: 718226356}
   m_Layer: 8
-  m_Name: TestMouse
+  m_Name: Mouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1533,6 +1534,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &775647220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 775647221}
+  - component: {fileID: 775647222}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &775647221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775647220}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 198.8818, y: 590.5773, z: -17.408625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &775647222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775647220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d48d083bd96223944a68e855f6e2e357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClearStage: 1
 --- !u!1 &801353039
 GameObject:
   m_ObjectHideFlags: 0
@@ -3817,4 +3863,5 @@ SceneRoots:
   - {fileID: 375705113}
   - {fileID: 718226357}
   - {fileID: 1406641122}
+  - {fileID: 775647221}
   - {fileID: 1052697144}

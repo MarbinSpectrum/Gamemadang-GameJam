@@ -22,16 +22,18 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                     instance = obj.GetComponent<T>();
                 }
             }
-            else
-            {
-                Destroy(instance.gameObject);
-            }
+        
             return instance;
         }
     }
 
     protected virtual void Awake()
     {
+         if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         DontDestroyOnLoad(gameObject);
     }
 }
