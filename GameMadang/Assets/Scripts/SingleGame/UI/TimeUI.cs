@@ -50,7 +50,7 @@ public class TimeUI : MonoBehaviour
         minute = (int)curtime / 60;
         sec = (int)curtime % 60;
 
-        str = string.Format("{0:D2} : {1:D2}",minute , sec);
+        str = string.Format("{0:D2}Ка {1:D2}УЪ",minute , sec);
 
         return str;
     }
