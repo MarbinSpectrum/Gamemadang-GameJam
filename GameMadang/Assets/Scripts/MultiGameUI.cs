@@ -9,6 +9,7 @@ using Photon.Realtime;
 public class MultiGameUI : MonoBehaviour
 {
     [SerializeField] private MultiSpawn multiSpawn;
+    [SerializeField] private MultiUnit multiUnit;
 
     [SerializeField]private GameObject[] masterUI;
     [SerializeField]private GameObject[] slaveUI;
@@ -24,20 +25,24 @@ public class MultiGameUI : MonoBehaviour
     [SerializeField] private GameObject countPanel;
 
     [SerializeField] private TimeUI timeCheck;
-
     private bool runGame = false;
 
     private int gameCnt = 0;
+
+    private GameObject myMouse = null;
 
     private void Awake()
     {
         GameManager.Instance.OnLife += CheckLife;
         GameManager.Instance.OnScore += CheckScore;
         if (PhotonNetwork.IsMasterClient)
+        {
             InGameSync.instance.gameSeed = 0;
+            InGameSync.instance.masterWin = 0;
+            InGameSync.instance.slaveWin = 0;
+        }
 
         ServerMgr.instance.SetInGame();
-        PhotonNetwork.Instantiate("Mouse", Vector3.zero, Quaternion.identity);
 
         Init();
     }
@@ -59,15 +64,33 @@ public class MultiGameUI : MonoBehaviour
             InGameSync.instance.SetSeed();
 
             yield return new WaitUntil(() => InGameSync.instance.gameSeed != 0);
-
             GameManager.Instance.GameStart(countText);
             multiSpawn.CreateUnit(InGameSync.instance.gameSeed + gameCnt);
+            CreateMultiObj(InGameSync.instance.gameSeed + gameCnt);
+
             gameCnt += 2324234;
             yield return new WaitUntil(() => Time.timeScale != 0);
+            if (myMouse == null)
+                myMouse = PhotonNetwork.Instantiate("Mouse", Vector3.zero, Quaternion.identity);
             runGame = true;
         }
 
         StartCoroutine(CreateUnitCor());
+    }
+
+    private void CreateMultiObj(int seed)
+    {
+        multiUnit.gameObject.SetActive(true);
+
+        UnityEngine.Random.InitState(seed);
+        float x = Random.Range(-7.0f, 7.0f);
+
+        UnityEngine.Random.InitState(seed + seed);
+        float y = Random.Range(-3.0f, 3.0f);
+
+        Vector3 pos = new Vector3(x, y);
+        multiUnit.SetUnit(20000, seed);
+        multiUnit.transform.position = pos;
     }
 
     private void Update()
@@ -146,6 +169,7 @@ public class MultiGameUI : MonoBehaviour
 
             if (InGameSync.instance.slaveWin >= 3)
             {
+                InGameSync.instance.gameSeed = 0;
                 GameDecision();
                 return;
             }
@@ -160,6 +184,7 @@ public class MultiGameUI : MonoBehaviour
 
             if (InGameSync.instance.masterWin >= 3)//∞‘¿”≥°
             {
+                InGameSync.instance.gameSeed = 0;
                 GameDecision();
                 return;
             }
@@ -196,6 +221,7 @@ public class MultiGameUI : MonoBehaviour
     {
         ServerMgr.instance.LeaveInGame();
         ObjectPool.Instance.ClearObj();
+        multiUnit.gameObject.SetActive(false);
         Time.timeScale = 1;
     }
 }

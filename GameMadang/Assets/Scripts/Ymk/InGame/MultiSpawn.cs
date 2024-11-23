@@ -23,18 +23,5 @@ public class MultiSpawn : MonoBehaviour
             obj.SetUnit(i, seed);
             obj.transform.position = pos;
         }
-
-        {
-            UnityEngine.Random.InitState(seed);
-            float x = Random.Range(-7.0f, 7.0f);
-
-            UnityEngine.Random.InitState(seed + seed);
-            float y = Random.Range(-3.0f, 3.0f);
-
-            Vector3 pos = new Vector3(x, y);
-            UnitObj obj = ObjectPool.Instance.SpawnFromPool("Obj2");
-            obj.SetUnit(spawnCnt, seed);
-            obj.transform.position = pos;
-        }
     }
 }
