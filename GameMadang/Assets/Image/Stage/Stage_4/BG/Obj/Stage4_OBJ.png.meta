@@ -103,9 +103,9 @@ TextureImporter:
       name: Stage4_OBJ_0
       rect:
         serializedVersion: 2
-        x: 68
+        x: 0
         y: 0
-        width: 188
+        width: 129
         height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Stage4_OBJ_0: 1003227670004124078
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

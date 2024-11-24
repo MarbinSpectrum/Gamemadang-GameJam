@@ -8,7 +8,7 @@ public class TitleUI : MonoBehaviour
     [SerializeField] private Button singleGameBtn;
     [SerializeField] private Button multiGameBtn;
 
-    private void Awake()
+    private void Start()
     {
         MapManager.Instance.CloseMap();
         ObjectPool.Instance.ClearObj();

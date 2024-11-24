@@ -10,10 +10,14 @@ public class SaveLoad : Singleton<SaveLoad>
     string path ;
     string fileName="save.json" ;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     private void Start()
     {
         path = Path.Combine(Application.persistentDataPath,fileName);
-        Load();
     }
     public void Save()
     {
