@@ -57,8 +57,6 @@ public class MultiGameUI : MonoBehaviour
         IEnumerator CreateUnitCor()
         {
             countPanel.SetActive(true);
-            masterCutScene.gameObject.SetActive(false);
-            slaveCutScene.gameObject.SetActive(false);
             timeCheck.timeOver = false;
             timeCheck.InitTime();
 
@@ -67,6 +65,10 @@ public class MultiGameUI : MonoBehaviour
             InGameSync.instance.SetSeed();
 
             yield return new WaitUntil(() => InGameSync.instance.gameSeed != 0);
+
+            masterCutScene.gameObject.SetActive(false);
+            slaveCutScene.gameObject.SetActive(false);
+
             if (stageNum == null)
                 stageNum = FenwickTreeRandomPicker.GetRandomNumbers(6, 5, InGameSync.instance.gameSeed);
 

@@ -4,7 +4,7 @@ using UnityEngine;
 public class SaveData
 {
     public int clearStage;
-    public float volume;
+    public float volume = 0.5f;
 }
 public class SaveLoad : Singleton<SaveLoad>
 {
