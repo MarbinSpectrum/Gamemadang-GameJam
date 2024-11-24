@@ -45,6 +45,7 @@ public class Mouse : MonoBehaviour
                     GameManager.Instance.clickPosition = Input.mousePosition;
                     GameManager.Instance.OnScore();
                     GameManager.Instance.OnMouseColor = Color.red;
+                    GameManager.Instance.hitOtherObj = hit[i].collider.gameObject;
                     return;
                 }
                 else if (hit[i].collider.gameObject.layer == 6)

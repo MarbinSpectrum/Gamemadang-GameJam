@@ -15,6 +15,8 @@ public class CutSceneEvent : MonoBehaviour
     [SerializeField] private Transform shootTransform;
     [SerializeField] private GameObject image;
 
+    private GameObject throwObj;
+
     GameObject shoot;
     GameObject explosion;
 
@@ -24,6 +26,7 @@ public class CutSceneEvent : MonoBehaviour
 
     public void StartCutScene()
     {
+        throwObj.SetActive(false);
         sound.sound = Sound.SE_CutScene;
         sound.PlaySound();
         RandomText();
@@ -31,6 +34,13 @@ public class CutSceneEvent : MonoBehaviour
 
         image.transform.DOLocalMoveX(0,0.1f).SetUpdate(true);
 
+
+    }
+    public void ThrowObj()
+    {
+        Sequence objSequence = DOTween.Sequence().SetUpdate(true)
+        .Append(throwObj.transform.DOMove(new Vector2(10,10), 1f))
+        .Join(throwObj.transform.DORotate(new Vector3(0, 0, 360), 0.3f, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1));
 
     }
 
@@ -50,6 +60,11 @@ public class CutSceneEvent : MonoBehaviour
 
     public void ShootSFX(Vector2 screenPos)
     {
+        throwObj = GameManager.Instance.hitOtherObj;
+        throwObj.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        float deviation = throwObj.transform.localScale.x - throwObj.transform.localScale.y;
+        throwObj.transform.localScale = new Vector2(throwObj.transform.localScale.x+(0.03f+ deviation), throwObj.transform.localScale.y+(0.03f -deviation));
+
         sound = gameObject.GetComponent<SoundObj>();
         sound.sound = Sound.SE_LaserShooting;
         sound.PlaySound();
