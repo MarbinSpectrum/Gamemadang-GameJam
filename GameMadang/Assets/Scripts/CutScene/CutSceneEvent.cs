@@ -13,46 +13,49 @@ public class CutSceneEvent : MonoBehaviour
     [SerializeField] private GameObject shootVFX;
 
     [SerializeField] private Transform shootTransform;
+    [SerializeField] private GameObject image;
     Sequence sequence;
 
     private void Awake()
     {
-        text=transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        text=transform.GetChild(1).GetComponent<TextMeshProUGUI>();
     }
-    public void StartEvent()
+    public void StartCutScene()
     {
-        Time.timeScale = 0f;
         RandomText();
+        image.SetActive(true);
     }
-    public void EndEvent()
+    public void EndCutScene()
     {
         gameObject.SetActive(false);
     }
     //이펙트를 하나로 합치고 
     public void ShootSFX()
     {
-        GameObject test1 = Instantiate(shootVFX, shootTransform);
-        Vector3 mousePosition = GameManager.Instance.clickPosition;
-        test1.transform.position = new Vector3(test1.transform.position.x, test1.transform.position.y, 0); // Z축 고정
-        
-        Vector3 direction = mousePosition - shootTransform.position;
-        direction.z = 0;
+        Time.timeScale = 0f;
 
+        GameObject test1 = Instantiate(shootVFX, shootTransform);//SFX 생성
+        GameObject test2 = Instantiate(explosionVFX, shootTransform);//SFX 생성
+
+        test2.SetActive(false);
+
+        Vector2 mousePosition = GameManager.Instance.clickPosition;//클릭한 좌표 불러오기
+
+
+        test1.transform.position = new Vector3(test1.transform.position.x, test1.transform.position.y, 0); // Z축 고정
+
+        Vector2 direction = mousePosition - (Vector2)shootTransform.position;//방향벡터
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
 
         sequence = DOTween.Sequence().SetUpdate(true)
-        .Append(test1.transform.DORotate(direction, 0.1f).SetEase(Ease.Linear))
-       .Append(test1.transform.DOMove(mousePosition, 1f));
-       // Debug.Log($"start: {shootTransform.position}, end: {mousePosition}, angle: {z}");
-        //.Append(DOTween.To(() => 0f, x => { explosionVFX.SetActive(false); },1f,0f)).SetUpdate(true)
-        //.Join(DOTween.To(() => 0f, x => { shootVFX.SetActive(true); },1f,0f).SetUpdate(true));
+       .Append(test1.transform.DORotate(new Vector3(0, 0, angle), 0.01f).SetEase(Ease.Linear))
+       .Append(test1.transform.DOMove(mousePosition, 0.5f))
+       .Append(DOTween.To(() => 0f, x => { test1.SetActive(false); }, 1f, 0f))
+       .Join(DOTween.To(() => 0f, x => { test2.transform.position = mousePosition; }, 1f, 0f))
+       .Append(DOTween.To(() => 0f, x => { test2.SetActive(true); }, 1f, 0f));
+       
     }
 
-    float GetAngle(Vector2 start, Vector2 end)
-    {
-        Vector2 v2 = end - start;
-        
-        return Mathf.Atan2(v2.y, v2.x) * Mathf.Rad2Deg;
-    }
 
     private void RandomText()
     {
