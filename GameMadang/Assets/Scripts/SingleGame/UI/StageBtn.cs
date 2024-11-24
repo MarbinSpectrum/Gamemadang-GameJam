@@ -10,7 +10,8 @@ public class StageBtn : MonoBehaviour
     {
         Button button = GetComponent<Button>();
         button.onClick.AddListener(() =>GameManager.Instance.EnterStage(num));
-        transform.DOScale(1f, 1f).SetEase(Ease.InOutQuart);
+        transform.transform.localScale = Vector3.one * 1.21f;
+        transform.DOScale(1f, 0.3f).SetEase(Ease.OutQuad);
     }
  
 

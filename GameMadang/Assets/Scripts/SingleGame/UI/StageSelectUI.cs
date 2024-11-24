@@ -51,7 +51,7 @@ public class StageSelectUI : MonoBehaviour
 
                 if (i < curOpenStage) OpenStage(obj);
             }
-            yield return new WaitForSecondsRealtime(0.1f);
+            yield return new WaitForSecondsRealtime(0.05f);
         }
     }
     private void SceneChange(string name)
