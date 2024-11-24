@@ -295,7 +295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &286214224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,6 +852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClearStage: 2
   curStage: 0
+  clickPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &1069185729
 PrefabInstance:
   m_ObjectHideFlags: 0

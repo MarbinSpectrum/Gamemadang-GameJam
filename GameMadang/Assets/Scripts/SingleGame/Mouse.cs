@@ -38,14 +38,19 @@ public class Mouse : MonoBehaviour
             {
                 if (hit[i].collider.gameObject.layer == 9)
                 {
+                    GameManager.Instance.clickPosition = Input.mousePosition;
                     GameManager.Instance.OnScore();
+                    
                     Debug.Log("정답");
                     return;
                 }
                 else if (hit[i].collider.gameObject.layer == 6)
                 {
                     if (i != hit.Length-1) continue;
+
+                    GameManager.Instance.clickPosition = Input.mousePosition;
                     GameManager.Instance.OnLife();
+
                     Debug.Log("오답");
 
                 }
