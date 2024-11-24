@@ -1,0 +1,1342 @@
+fileFormatVersion: 2
+guid: 1b6ef880ea7bbb2409eef0a8198e2ca0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6127501241936694617
+    second: Stage6_walk_9_0
+  - first:
+      213: -8279752497579265671
+    second: Stage6_walk_9_1
+  - first:
+      213: -749398601271731010
+    second: Stage6_walk_9_2
+  - first:
+      213: 8135958210245695513
+    second: Stage6_walk_9_3
+  - first:
+      213: 3750968498403121189
+    second: Stage6_walk_9_4
+  - first:
+      213: 6762665254822636669
+    second: Stage6_walk_9_5
+  - first:
+      213: -139542730239388366
+    second: Stage6_walk_9_6
+  - first:
+      213: 1657370411701558133
+    second: Stage6_walk_9_7
+  - first:
+      213: -3506617039659376069
+    second: Stage6_walk_9_8
+  - first:
+      213: -6843763210136755040
+    second: Stage6_walk_9_9
+  - first:
+      213: 3751681433310075413
+    second: Stage6_walk_9_10
+  - first:
+      213: 7417581085679150652
+    second: Stage6_walk_9_11
+  - first:
+      213: -2351603254787102728
+    second: Stage6_walk_9_12
+  - first:
+      213: 878425821166351927
+    second: Stage6_walk_9_13
+  - first:
+      213: 1483903502119675594
+    second: Stage6_walk_9_14
+  - first:
+      213: -4061156636677790988
+    second: Stage6_walk_9_15
+  - first:
+      213: -3405310619359326605
+    second: Stage6_walk_9_16
+  - first:
+      213: -2876082789094143142
+    second: Stage6_walk_9_17
+  - first:
+      213: -8498959520259499732
+    second: Stage6_walk_9_18
+  - first:
+      213: -8406142360158894357
+    second: Stage6_walk_9_19
+  - first:
+      213: -9097874399225833850
+    second: Stage6_walk_9_20
+  - first:
+      213: -2702812748222828998
+    second: Stage6_walk_9_21
+  - first:
+      213: 3043694248520349632
+    second: Stage6_walk_9_22
+  - first:
+      213: -5288364424922942562
+    second: Stage6_walk_9_23
+  - first:
+      213: 6097328008330791983
+    second: Stage6_walk_9_24
+  - first:
+      213: 7169417870383304413
+    second: Stage6_walk_9_25
+  - first:
+      213: 3268271843987707487
+    second: Stage6_walk_9_26
+  - first:
+      213: 3839411311701688600
+    second: Stage6_walk_9_27
+  - first:
+      213: 8690739601357910429
+    second: Stage6_walk_9_28
+  - first:
+      213: 7065095861077943422
+    second: Stage6_walk_9_29
+  - first:
+      213: 1453315112739668489
+    second: Stage6_walk_9_30
+  - first:
+      213: 3355487847068597028
+    second: Stage6_walk_9_31
+  - first:
+      213: -3435713154447970960
+    second: Stage6_walk_9_32
+  - first:
+      213: -3965719118061931459
+    second: Stage6_walk_9_33
+  - first:
+      213: 7513595712292621684
+    second: Stage6_walk_9_34
+  - first:
+      213: 632305656665907709
+    second: Stage6_walk_9_35
+  - first:
+      213: -8937668509534646241
+    second: Stage6_walk_9_36
+  - first:
+      213: 813902959683115796
+    second: Stage6_walk_9_37
+  - first:
+      213: 658195350436060170
+    second: Stage6_walk_9_38
+  - first:
+      213: 1208302836225923691
+    second: Stage6_walk_9_39
+  - first:
+      213: 2963519307478665731
+    second: Stage6_walk_9_40
+  - first:
+      213: 6863312064018191494
+    second: Stage6_walk_9_41
+  - first:
+      213: -2289905422426845126
+    second: Stage6_walk_9_42
+  - first:
+      213: -1577338556800432013
+    second: Stage6_walk_9_43
+  - first:
+      213: 7790499797547711572
+    second: Stage6_walk_9_44
+  - first:
+      213: 2752095025294229990
+    second: Stage6_walk_9_45
+  - first:
+      213: 1053176030234844178
+    second: Stage6_walk_9_46
+  - first:
+      213: -566845427627055706
+    second: Stage6_walk_9_47
+  - first:
+      213: 4103328022488673201
+    second: Stage6_walk_9_48
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Stage6_walk_9_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 19
+        width: 1830
+        height: 2637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a23999d51eb6faa0800000000000000
+      internalID: -6127501241936694617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_1
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 2370
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97172a1b8f8681d80800000000000000
+      internalID: -8279752497579265671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_2
+      rect:
+        serializedVersion: 2
+        x: 1843
+        y: 19
+        width: 1702
+        height: 2750
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebc160051f99995f0800000000000000
+      internalID: -749398601271731010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_3
+      rect:
+        serializedVersion: 2
+        x: 1790
+        y: 2346
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9181e15d2eab8e070800000000000000
+      internalID: 8135958210245695513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_4
+      rect:
+        serializedVersion: 2
+        x: 1788
+        y: 2337
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5289ffec9fd1e0430800000000000000
+      internalID: 3750968498403121189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_5
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 2328
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7c64981830d9dd50800000000000000
+      internalID: 6762665254822636669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_6
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 2320
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 235d71d40ae301ef0800000000000000
+      internalID: -139542730239388366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_7
+      rect:
+        serializedVersion: 2
+        x: 1789
+        y: 2314
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57bd6babb99200710800000000000000
+      internalID: 1657370411701558133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_8
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 2295
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3265cb916ef55fc0800000000000000
+      internalID: -3506617039659376069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_9
+      rect:
+        serializedVersion: 2
+        x: 1790
+        y: 2298
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a469e4ce911601a0800000000000000
+      internalID: -6843763210136755040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2274
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51a10e6e266a01430800000000000000
+      internalID: 3751681433310075413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_11
+      rect:
+        serializedVersion: 2
+        x: 1793
+        y: 2273
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c36ef8882ba80f660800000000000000
+      internalID: 7417581085679150652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_12
+      rect:
+        serializedVersion: 2
+        x: 1796
+        y: 2281
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f723c19c4d6d5fd0800000000000000
+      internalID: -2351603254787102728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_13
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 2266
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 736b62851abc03c00800000000000000
+      internalID: 878425821166351927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_14
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 2269
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac62dc48f52e79410800000000000000
+      internalID: 1483903502119675594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_15
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2251
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f2a99d4e8fd3a7c0800000000000000
+      internalID: -4061156636677790988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_16
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 2242
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37ec837a808edb0d0800000000000000
+      internalID: -3405310619359326605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_17
+      rect:
+        serializedVersion: 2
+        x: 1781
+        y: 2238
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5bcd6301f91618d0800000000000000
+      internalID: -2876082789094143142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_18
+      rect:
+        serializedVersion: 2
+        x: 1798
+        y: 2240
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2912828851ad0a80800000000000000
+      internalID: -8498959520259499732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_19
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 2234
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be68d53af02675b80800000000000000
+      internalID: -8406142360158894357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2226
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 686160fbf6bddb180800000000000000
+      internalID: -9097874399225833850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_21
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 2220
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3ee7c7202ead7ad0800000000000000
+      internalID: -2702812748222828998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2202
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c774f7facf5d3a20800000000000000
+      internalID: 3043694248520349632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_23
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 2205
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e93b7a11394fb96b0800000000000000
+      internalID: -5288364424922942562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_24
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 2202
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2cc89fb48f0e9450800000000000000
+      internalID: 6097328008330791983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_25
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 2181
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddec8826193ee7360800000000000000
+      internalID: 7169417870383304413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_26
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 2189
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f565c421deb3b5d20800000000000000
+      internalID: 3268271843987707487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_27
+      rect:
+        serializedVersion: 2
+        x: 1798
+        y: 2184
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8118894fe34584530800000000000000
+      internalID: 3839411311701688600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_28
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 2174
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d91bb563f95bb9870800000000000000
+      internalID: 8690739601357910429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_29
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 2177
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7422afc0434c0260800000000000000
+      internalID: 7065095861077943422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_30
+      rect:
+        serializedVersion: 2
+        x: 1786
+        y: 2177
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9020e8125663b2410800000000000000
+      internalID: 1453315112739668489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_31
+      rect:
+        serializedVersion: 2
+        x: 1798
+        y: 2176
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42bf9a43b66119e20800000000000000
+      internalID: 3355487847068597028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_32
+      rect:
+        serializedVersion: 2
+        x: 1795
+        y: 2163
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07dedf6d615e150d0800000000000000
+      internalID: -3435713154447970960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2147
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3471f0397fe6f8c0800000000000000
+      internalID: -3965719118061931459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_34
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 2149
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47d8919dd77a54860800000000000000
+      internalID: 7513595712292621684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_35
+      rect:
+        serializedVersion: 2
+        x: 1783
+        y: 2139
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df1aa0705a666c800800000000000000
+      internalID: 632305656665907709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_36
+      rect:
+        serializedVersion: 2
+        x: 1799
+        y: 2140
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f101ef828d507f380800000000000000
+      internalID: -8937668509534646241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_37
+      rect:
+        serializedVersion: 2
+        x: 1807
+        y: 2122
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41b1d89fd609b4b00800000000000000
+      internalID: 813902959683115796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_38
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 2113
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0c1e871f21622900800000000000000
+      internalID: 658195350436060170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_39
+      rect:
+        serializedVersion: 2
+        x: 1787
+        y: 2109
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6ad7561701c4c010800000000000000
+      internalID: 1208302836225923691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_40
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 2089
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30a0747db19802920800000000000000
+      internalID: 2963519307478665731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_41
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 2096
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 684157675f16f3f50800000000000000
+      internalID: 6863312064018191494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_42
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 2088
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a30d107962f9830e0800000000000000
+      internalID: -2289905422426845126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_43
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 2075
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 378026f80fa2c1ae0800000000000000
+      internalID: -1577338556800432013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_44
+      rect:
+        serializedVersion: 2
+        x: 1783
+        y: 2077
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45c759f3a4a6d1c60800000000000000
+      internalID: 7790499797547711572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_45
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2052
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e148c228d7613620800000000000000
+      internalID: 2752095025294229990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_46
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 2053
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21c9a100502ad9e00800000000000000
+      internalID: 1053176030234844178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_47
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 2036
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a52cbb36192228f0800000000000000
+      internalID: -566845427627055706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stage6_walk_9_48
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1993
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bbe7599813f1f830800000000000000
+      internalID: 4103328022488673201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
