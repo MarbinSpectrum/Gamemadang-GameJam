@@ -18,6 +18,7 @@ public class SaveLoad : Singleton<SaveLoad>
     private void Start()
     {
         path = Path.Combine(Application.persistentDataPath,fileName);
+        Load();
     }
     public void Save()
     {

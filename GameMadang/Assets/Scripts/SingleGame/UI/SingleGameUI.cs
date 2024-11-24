@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Unity.VisualScripting;
 
 public class SingleGameUI : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class SingleGameUI : MonoBehaviour
 
     [Header("CutScene")]
     [SerializeField] private GameObject timeLine;
+    [SerializeField] private SoundObj sound;
+
 
     private GameObject curMap=null;
 
@@ -60,6 +63,10 @@ public class SingleGameUI : MonoBehaviour
 
     private void SceneChange(string name)
     {
+        if(name== "SingleGame" )
+        {
+            if (GameManager.Instance.curStage > 6) name = "StageSelect";
+        }
         SceneManager.LoadScene(name);
     }
 
@@ -76,6 +83,7 @@ public class SingleGameUI : MonoBehaviour
     private void GameOver()
     {
         Time.timeScale = 0;
+        sound.PlaySound();
         GameOverPanel.SetActive(true);
     }
     private void StartCutScene()
@@ -96,6 +104,7 @@ public class SingleGameUI : MonoBehaviour
         }
        
         SaveLoad.Instance.Save();
+        sound.PlaySound();
         GameClearPanel.SetActive(true);
     }
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class Mouse : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Mouse : MonoBehaviour
     private BGObject bgObj;
 
     private Coroutine coroutine;
+    [SerializeField] private SoundObj sound;
 
     private void Awake()
     {
@@ -60,6 +62,7 @@ public class Mouse : MonoBehaviour
 
                 if(hit[i].collider.gameObject.layer != 8)
                 {
+                    sound.PlaySound();
                     GameManager.Instance.ActiveSFX();
                     GameManager.Instance.OnMouseColor = Color.red;
                     if (coroutine == null) coroutine = StartCoroutine(ReturnColor());
