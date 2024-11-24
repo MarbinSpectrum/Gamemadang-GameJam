@@ -66,7 +66,7 @@ public class MultiGameUI : MonoBehaviour
             multiSpawn.CreateUnit(InGameSync.instance.gameSeed + gameCnt);
             CreateMultiObj(InGameSync.instance.gameSeed + gameCnt);
 
-            gameCnt += 2324234;
+            gameCnt += 200000;
             yield return new WaitUntil(() => Time.timeScale != 0);
             if (myMouse == null)
                 myMouse = PhotonNetwork.Instantiate("Mouse", Vector3.zero, Quaternion.identity);
