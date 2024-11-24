@@ -215,6 +215,20 @@ public class MultiGameUI : MonoBehaviour
         Init();
     }
 
+    public void MultiShootSFX_Master()
+    {
+        GameObject targetUnit = multiSpawn.TargetUnit();
+        Vector2 pos = Camera.main.WorldToScreenPoint(targetUnit.transform.position);
+        masterCutScene.ShootSFX(pos);
+    }
+
+    public void MultiShootSFX_Slave()
+    {
+        GameObject targetUnit = multiSpawn.TargetUnit();
+        Vector2 pos = Camera.main.WorldToScreenPoint(targetUnit.transform.position);
+        slaveCutScene.ShootSFX(pos);
+    }
+
     public void MainScene()
     {
         ServerMgr.instance.LeaveInGame();

@@ -18,49 +18,51 @@ public class CutSceneEvent : MonoBehaviour
 
     private void Awake()
     {
-        text=transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        text = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
     }
+
     public void StartCutScene()
     {
         RandomText();
         image.SetActive(true);
     }
+
     public void EndCutScene()
     {
         gameObject.SetActive(false);
     }
+
     //이펙트를 하나로 합치고 
     public void ShootSFX()
     {
+        Vector2 mousePosition = GameManager.Instance.clickPosition;//클릭한 좌표 불러오기
+        ShootSFX(mousePosition);
+    }
+
+    public void ShootSFX(Vector2 screenPos)
+    {
         Time.timeScale = 0f;
 
-        GameObject test1 = Instantiate(shootVFX, shootTransform);//SFX 생성
-        GameObject test2 = Instantiate(explosionVFX, shootTransform);//SFX 생성
+        GameObject shoot = Instantiate(shootVFX, shootTransform);//SFX 생성
+        GameObject explosion = Instantiate(explosionVFX, shootTransform);//SFX 생성
 
-        test2.SetActive(false);
+        explosion.SetActive(false);
 
-        Vector2 mousePosition = GameManager.Instance.clickPosition;//클릭한 좌표 불러오기
+        shoot.transform.position = new Vector3(shoot.transform.position.x, shoot.transform.position.y, 0); // Z축 고정
 
-
-        test1.transform.position = new Vector3(test1.transform.position.x, test1.transform.position.y, 0); // Z축 고정
-
-        Vector2 direction = mousePosition - (Vector2)shootTransform.position;//방향벡터
+        Vector2 direction = screenPos - (Vector2)shootTransform.position;//방향벡터
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
 
         sequence = DOTween.Sequence().SetUpdate(true)
-       .Append(test1.transform.DORotate(new Vector3(0, 0, angle), 0.01f).SetEase(Ease.Linear))
-       .Append(test1.transform.DOMove(mousePosition, 0.5f))
-       .Append(DOTween.To(() => 0f, x => { test1.SetActive(false); }, 1f, 0f))
-       .Join(DOTween.To(() => 0f, x => { test2.transform.position = mousePosition; }, 1f, 0f))
-       .Append(DOTween.To(() => 0f, x => { test2.SetActive(true); }, 1f, 0f));
-       
+       .Append(shoot.transform.DORotate(new Vector3(0, 0, angle), 0.01f).SetEase(Ease.Linear))
+       .Append(shoot.transform.DOMove(screenPos, 0.5f))
+       .Append(DOTween.To(() => 0f, x => { shoot.SetActive(false); }, 1f, 0f))
+       .Join(DOTween.To(() => 0f, x => { explosion.transform.position = screenPos; }, 1f, 0f))
+       .Append(DOTween.To(() => 0f, x => { explosion.SetActive(true); }, 1f, 0f));
     }
-
 
     private void RandomText()
     {
         text.text = dialogue[Random.Range(0,dialogue.Length)];
-    }
-
-    
+    }  
 }
