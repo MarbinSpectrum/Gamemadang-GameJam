@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55b3d9fbad0584147836b78473d81528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageCount: 15
+  stageCount: 6
   stageTransform: {fileID: 1087375515}
   prefab: {fileID: 3583267427365988966, guid: 47cb8cd0c0d171d40af51e3e9197680e, type: 3}
   backBtn: {fileID: 1996711714}

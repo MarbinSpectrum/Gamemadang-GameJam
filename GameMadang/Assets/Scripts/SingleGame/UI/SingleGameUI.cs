@@ -25,7 +25,6 @@ public class SingleGameUI : MonoBehaviour
 
     [Header("CutScene")]
     [SerializeField] private GameObject timeLine;
-    [SerializeField] private Mouse mouse;
 
     private GameObject curMap=null;
 

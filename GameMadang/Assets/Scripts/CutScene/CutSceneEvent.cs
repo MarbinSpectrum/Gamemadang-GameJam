@@ -6,7 +6,7 @@ public class CutSceneEvent : MonoBehaviour
 {
     //넣을 수도 있는거 효과음, 움직임, 대사변환 정도?
 
-    private TextMeshProUGUI text;
+    [SerializeField]private TextMeshProUGUI text;
     private string[] dialogue = { "받아라 정상화의 총알!", "거기 너! 숨어봤자 소용없다!","이제 그만 너희 세계로 돌아가!","이세계 정상화!" };
 
     [SerializeField] private GameObject explosionVFX;
@@ -20,19 +20,24 @@ public class CutSceneEvent : MonoBehaviour
 
     Sequence sequence;
 
-    private void Awake()
-    {
-        text = transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-    }
+    SoundObj sound;
 
     public void StartCutScene()
     {
+        sound.sound = Sound.SE_CutScene;
+        sound.PlaySound();
         RandomText();
         image.SetActive(true);
+
+        image.transform.DOLocalMoveX(0,0.1f).SetUpdate(true);
+
+
     }
 
     public void EndCutScene()
     {
+        Destroy(shoot);
+        Destroy(explosion);
         gameObject.SetActive(false);
     }
 
@@ -45,10 +50,14 @@ public class CutSceneEvent : MonoBehaviour
 
     public void ShootSFX(Vector2 screenPos)
     {
+        sound = gameObject.GetComponent<SoundObj>();
+        sound.sound = Sound.SE_LaserShooting;
+        sound.PlaySound();
+
         Time.timeScale = 0f;
 
-        GameObject shoot = Instantiate(shootVFX, shootTransform);//SFX 생성
-        GameObject explosion = Instantiate(explosionVFX, shootTransform);//SFX 생성
+        shoot = Instantiate(shootVFX, shootTransform);//SFX 생성
+        explosion = Instantiate(explosionVFX, shootTransform);//SFX 생성
 
         explosion.SetActive(false);
 
