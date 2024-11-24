@@ -68,7 +68,7 @@ public class MultiGameUI : MonoBehaviour
 
             yield return new WaitUntil(() => InGameSync.instance.gameSeed != 0);
             if (stageNum == null)
-                stageNum = FenwickTreeRandomPicker.GetRandomNumbers(5, 5, InGameSync.instance.gameSeed);
+                stageNum = FenwickTreeRandomPicker.GetRandomNumbers(6, 5, InGameSync.instance.gameSeed);
 
             GameManager.Instance.GameStart(countText);
             int nowRound = InGameSync.instance.masterWin + InGameSync.instance.slaveWin;
