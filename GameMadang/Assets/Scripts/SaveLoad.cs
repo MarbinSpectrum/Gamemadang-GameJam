@@ -4,6 +4,7 @@ using UnityEngine;
 public class SaveData
 {
     public int clearStage;
+    public float volume;
 }
 public class SaveLoad : Singleton<SaveLoad>
 {
@@ -25,6 +26,7 @@ public class SaveLoad : Singleton<SaveLoad>
         SaveData saveData = new SaveData();
 
         saveData.clearStage = GameManager.Instance.ClearStage;
+        saveData.volume = SoundMgr.Instance.GetVolume();
         string json = JsonUtility.ToJson(saveData);
 
         File .WriteAllText(path, json);
@@ -39,6 +41,7 @@ public class SaveLoad : Singleton<SaveLoad>
             saveData = JsonUtility.FromJson<SaveData>(json);
 
             GameManager.Instance.ClearStage = saveData.clearStage;
+            SoundMgr.Instance.SetVolume(saveData.volume);
         }
     }
 }

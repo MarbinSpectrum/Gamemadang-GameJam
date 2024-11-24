@@ -101,13 +101,19 @@ public class MultiGameUI : MonoBehaviour
         {
             InGameSync.instance.masterHp--;
             if (InGameSync.instance.masterHp == 0)
+            {
                 InGameSync.instance.res = GameResult.SlaveWin;
+                InGameSync.instance.slaveWin++;
+            }
         }
         else
         {
             InGameSync.instance.slaveHp--;
             if (InGameSync.instance.slaveHp == 0)
+            {
                 InGameSync.instance.res = GameResult.MasterWin;
+                InGameSync.instance.masterWin++;
+            }
         }
     }
 
