@@ -66,7 +66,7 @@ public class CutSceneEvent : MonoBehaviour
     public void ShootSFX(Vector2 screenPos, GameObject pThrowGameObj)
     {
         text.text = "";
-
+        image.SetActive(false);
         if (x ==null) x = image.transform.localPosition.x;
 
         throwObj = pThrowGameObj;
