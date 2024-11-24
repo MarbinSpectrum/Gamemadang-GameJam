@@ -41,10 +41,10 @@ public class MultiSpawn : MonoBehaviour
             }
         }
 
-        CreateMultiObj(seed, stageNum);
+        CreateMultiObj(seed, stageNum, xRange,yRange);
     }
 
-    private void CreateMultiObj(int seed,int stageNum)
+    private void CreateMultiObj(int seed,int stageNum, float[] xRange, float[] yRange)
     {
         ClearMultiObj();
 
@@ -52,10 +52,10 @@ public class MultiSpawn : MonoBehaviour
         unit.gameObject.SetActive(true);
 
         UnityEngine.Random.InitState(seed);
-        float x = Random.Range(-7.0f, 7.0f);
+        float x = Random.Range(xRange[0], xRange[1]);
 
         UnityEngine.Random.InitState(seed + seed);
-        float y = Random.Range(-3.0f, 3.0f);
+        float y = Random.Range(yRange[0], yRange[1]);
 
         Vector3 pos = new Vector3(x, y);
         unit.SetUnit(20000, seed);
