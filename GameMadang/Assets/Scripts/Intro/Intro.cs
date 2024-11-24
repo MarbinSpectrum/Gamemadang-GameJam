@@ -19,16 +19,20 @@ public class Intro : MonoBehaviour
 
     private void SetPage(int n)
     {
+        if (n > 4)
+            return;
+
+        if (pageAni != null)
+        {
+            StopCoroutine(pageAni);
+            pageAni = null;
+        }
+
+
         IEnumerator Run()
         {
             if (n == 0)
             {
-                if (pageAni != null)
-                {
-                    StopCoroutine(pageAni);
-                    pageAni = null;
-                }
-
                 for (int i = 0; i < pageObj.Count; i++)
                     pageObj[i].gameObject.SetActive(false);
                 for (int i = 0; i < pageObj.Count; i++)
@@ -39,12 +43,6 @@ public class Intro : MonoBehaviour
             }
             else if (n <= 3)
             {
-                if (pageAni != null)
-                {
-                    StopCoroutine(pageAni);
-                    pageAni = null;
-                }
-
                 for (int i = 0; i < pageObj.Count; i++)
                     pageObj[i].gameObject.SetActive(false);
                 for (int i = 0; i < pageObj.Count; i++)
@@ -64,12 +62,6 @@ public class Intro : MonoBehaviour
             }
             else if (n == 4)
             {
-                if (pageAni != null)
-                {
-                    StopCoroutine(pageAni);
-                    pageAni = null;
-                }
-
                 pageObj[n - 1].transform.position = basePos.transform.position;
                 pageObj[n - 1].gameObject.SetActive(true);
 
