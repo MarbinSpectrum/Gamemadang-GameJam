@@ -7,6 +7,7 @@ public class Intro : MonoBehaviour
     [SerializeField] private List<Transform> pageObj = new List<Transform>();
     [SerializeField] private Transform basePos;
     [SerializeField] private Transform spawnPos;
+    [SerializeField] private Transform titleImg;
 
     private IEnumerator pageAni = null;
     private int nowPage = 0;
@@ -49,15 +50,27 @@ public class Intro : MonoBehaviour
                 float dis = 0;
                 do
                 {
-                    pageObj[n].transform.position = Vector3.Lerp(pageObj[n].transform.position, pageObj[n - 1].transform.position, 0.03f);
+                    pageObj[n].transform.position = Vector3.Lerp(pageObj[n].transform.position, pageObj[n - 1].transform.position, 0.1f);
                     dis = Vector3.Distance(pageObj[n - 1].transform.position, pageObj[n].transform.position);
                     yield return null;
                 } while (dis > 0.1f);
             }
             else if (n == 4)
             {
+                pageObj[n - 1].transform.position = basePos.transform.position;
                 pageObj[n - 1].gameObject.SetActive(true);
-                yield return new WaitForSeconds(1f);
+
+                yield return new WaitForSeconds(0.5f);
+
+                float dis = 0;
+                do
+                {
+                    titleImg.transform.position = Vector3.Lerp(titleImg.transform.position, basePos.transform.position, 0.1f);
+                    dis = Vector3.Distance(titleImg.transform.position, basePos.transform.position);
+                    yield return null;
+                } while (dis > 0.1f);
+                titleImg.transform.position = basePos.transform.position;
+
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
             }
         }
