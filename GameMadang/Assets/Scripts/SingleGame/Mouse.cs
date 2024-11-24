@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 public class Mouse : MonoBehaviour
 {
@@ -9,10 +10,13 @@ public class Mouse : MonoBehaviour
     private int layerMask;
     private BGObject bgObj;
 
+    private Coroutine coroutine;
+
     private void Awake()
     {
         cam = Camera.main;
         layerMask = (1 << 6) + (1 << 8) +(1<<9);
+        GameManager.Instance.OnMouseColor = Color.white;
     }
 
     // Update is called once per frame
@@ -40,7 +44,7 @@ public class Mouse : MonoBehaviour
                 {
                     GameManager.Instance.clickPosition = Input.mousePosition;
                     GameManager.Instance.OnScore();
-
+                    GameManager.Instance.OnMouseColor = Color.red;
                     return;
                 }
                 else if (hit[i].collider.gameObject.layer == 6)
@@ -51,16 +55,14 @@ public class Mouse : MonoBehaviour
                     GameManager.Instance.OnLife();
 
                     Debug.Log("¿À´ä");
-
                 }
 
                 GameManager.Instance.OnMouseColor = Color.red;
+                if (coroutine == null) coroutine = StartCoroutine(ReturnColor());
 
+               // Debug.Log(GameManager.Instance.OnMouseColor);
             }
-            else
-            {
-                GameManager.Instance.OnMouseColor = Color.white;
-            }
+           
         }
         if(hit.Length==0)
         {
@@ -70,6 +72,13 @@ public class Mouse : MonoBehaviour
                 bgObj = null;
             }
         }
+    }
 
+    IEnumerator ReturnColor()
+    {
+        yield return new WaitForSeconds(1f);
+        GameManager.Instance.OnMouseColor = Color.white;
+        coroutine = null;
+        Debug.Log(1111);
     }
 }

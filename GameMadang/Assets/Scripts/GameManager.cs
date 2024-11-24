@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
 
     public NoParaDel OnLife;
     public NoParaDel OnScore;
-    public Color OnMouseColor;
+    public Color OnMouseColor = Color.white;
 
 
     Coroutine coroutine;
