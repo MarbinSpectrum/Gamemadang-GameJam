@@ -14,6 +14,10 @@ public class CutSceneEvent : MonoBehaviour
 
     [SerializeField] private Transform shootTransform;
     [SerializeField] private GameObject image;
+
+    GameObject shoot;
+    GameObject explosion;
+
     Sequence sequence;
 
     private void Awake()
