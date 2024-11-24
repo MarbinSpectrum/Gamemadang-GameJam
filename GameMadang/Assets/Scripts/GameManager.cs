@@ -14,6 +14,8 @@ public class GameManager : Singleton<GameManager>
 
 
     Coroutine coroutine;
+
+    public Vector3 clickPosition;
     protected override void Awake()
     {
         base.Awake();

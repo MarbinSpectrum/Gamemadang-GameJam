@@ -12,6 +12,7 @@ public class CutSceneEvent : MonoBehaviour
     [SerializeField] private GameObject explosionVFX;
     [SerializeField] private GameObject shootVFX;
 
+    [SerializeField] private Transform shootTransform;
     Sequence sequence;
 
     private void Awake()
@@ -30,14 +31,28 @@ public class CutSceneEvent : MonoBehaviour
     //이펙트를 하나로 합치고 
     public void ShootSFX()
     {
-        //GameObject Shoo = Instantiate(shootVFX, ); 잠깐보류
+        GameObject test1 = Instantiate(shootVFX, shootTransform);
+        Vector3 mousePosition = GameManager.Instance.clickPosition;
+        test1.transform.position = new Vector3(test1.transform.position.x, test1.transform.position.y, 0); // Z축 고정
+        
+        Vector3 direction = mousePosition - shootTransform.position;
+        direction.z = 0;
 
-        sequence = DOTween.Sequence()
-       .Append(explosionVFX.transform.DOMove(Input.mousePosition, 1f).SetUpdate(true))
-       .Append(DOTween.To(() => 0f, x => { explosionVFX.SetActive(false); },1f,0f)).SetUpdate(true)
-       .Join(DOTween.To(() => 0f, x => { shootVFX.SetActive(true); },1f,0f).SetUpdate(true));
+
+        sequence = DOTween.Sequence().SetUpdate(true)
+        .Append(test1.transform.DORotate(direction, 0.1f).SetEase(Ease.Linear))
+       .Append(test1.transform.DOMove(mousePosition, 1f));
+       // Debug.Log($"start: {shootTransform.position}, end: {mousePosition}, angle: {z}");
+        //.Append(DOTween.To(() => 0f, x => { explosionVFX.SetActive(false); },1f,0f)).SetUpdate(true)
+        //.Join(DOTween.To(() => 0f, x => { shootVFX.SetActive(true); },1f,0f).SetUpdate(true));
     }
 
+    float GetAngle(Vector2 start, Vector2 end)
+    {
+        Vector2 v2 = end - start;
+        
+        return Mathf.Atan2(v2.y, v2.x) * Mathf.Rad2Deg;
+    }
 
     private void RandomText()
     {
