@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class MultiSpawn : MonoBehaviour
 {
     [SerializeField] private List<MultiUnit> multiUnit;
-    private GameObject targetUnit;
+    private MultiUnit targetUnit;
 
     public void CreateUnit(int stageNum, int seed)
     {
@@ -62,7 +62,7 @@ public class MultiSpawn : MonoBehaviour
 
         unit.gameObject.SetActive(true);
 
-        targetUnit = unit.gameObject;
+        targetUnit = unit;
     }
 
     public void ClearMultiObj()
@@ -71,7 +71,7 @@ public class MultiSpawn : MonoBehaviour
             multiUnit[i].gameObject.SetActive(false);
     }
 
-    public GameObject TargetUnit()
+    public MultiUnit TargetUnit()
     {
         return targetUnit;
     }
