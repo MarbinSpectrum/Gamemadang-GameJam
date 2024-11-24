@@ -112,6 +112,27 @@ public class ObjectPool : Singleton<ObjectPool>
             new KeyValuePair<UnitTag, string>(UnitTag.Stage5_9,"Stage5-9"),
             new KeyValuePair<UnitTag, string>(UnitTag.Stage5_10,"Stage5-10"),
             new KeyValuePair<UnitTag, string>(UnitTag.Stage5_Other,"Stage5 Other"),
+
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_1,"Stage6-1"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_2,"Stage6-2"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_3,"Stage6-3"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_4,"Stage6-4"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_5,"Stage6-5"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_6,"Stage6-6"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_7,"Stage6-7"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_8,"Stage6-8"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_9,"Stage6-9"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_10,"Stage6-10"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_11,"Stage6-11"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_12,"Stage6-12"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_13,"Stage6-13"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_14,"Stage6-14"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_15,"Stage6-15"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_16,"Stage6-16"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_17,"Stage6-17"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_18,"Stage6-18"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_19,"Stage6-19"),
+            new KeyValuePair<UnitTag, string>(UnitTag.Stage6_Other,"Stage6 Other"),
         };
 
         foreach(KeyValuePair<UnitTag, string> pair in kvpArr)

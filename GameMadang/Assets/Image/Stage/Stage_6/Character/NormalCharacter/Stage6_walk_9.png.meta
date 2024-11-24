@@ -190,9 +190,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -1325,7 +1325,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -1334,7 +1334,56 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Stage6_walk_9_0: -6127501241936694617
+      Stage6_walk_9_1: -8279752497579265671
+      Stage6_walk_9_10: 3751681433310075413
+      Stage6_walk_9_11: 7417581085679150652
+      Stage6_walk_9_12: -2351603254787102728
+      Stage6_walk_9_13: 878425821166351927
+      Stage6_walk_9_14: 1483903502119675594
+      Stage6_walk_9_15: -4061156636677790988
+      Stage6_walk_9_16: -3405310619359326605
+      Stage6_walk_9_17: -2876082789094143142
+      Stage6_walk_9_18: -8498959520259499732
+      Stage6_walk_9_19: -8406142360158894357
+      Stage6_walk_9_2: -749398601271731010
+      Stage6_walk_9_20: -9097874399225833850
+      Stage6_walk_9_21: -2702812748222828998
+      Stage6_walk_9_22: 3043694248520349632
+      Stage6_walk_9_23: -5288364424922942562
+      Stage6_walk_9_24: 6097328008330791983
+      Stage6_walk_9_25: 7169417870383304413
+      Stage6_walk_9_26: 3268271843987707487
+      Stage6_walk_9_27: 3839411311701688600
+      Stage6_walk_9_28: 8690739601357910429
+      Stage6_walk_9_29: 7065095861077943422
+      Stage6_walk_9_3: 8135958210245695513
+      Stage6_walk_9_30: 1453315112739668489
+      Stage6_walk_9_31: 3355487847068597028
+      Stage6_walk_9_32: -3435713154447970960
+      Stage6_walk_9_33: -3965719118061931459
+      Stage6_walk_9_34: 7513595712292621684
+      Stage6_walk_9_35: 632305656665907709
+      Stage6_walk_9_36: -8937668509534646241
+      Stage6_walk_9_37: 813902959683115796
+      Stage6_walk_9_38: 658195350436060170
+      Stage6_walk_9_39: 1208302836225923691
+      Stage6_walk_9_4: 3750968498403121189
+      Stage6_walk_9_40: 2963519307478665731
+      Stage6_walk_9_41: 6863312064018191494
+      Stage6_walk_9_42: -2289905422426845126
+      Stage6_walk_9_43: -1577338556800432013
+      Stage6_walk_9_44: 7790499797547711572
+      Stage6_walk_9_45: 2752095025294229990
+      Stage6_walk_9_46: 1053176030234844178
+      Stage6_walk_9_47: -566845427627055706
+      Stage6_walk_9_48: 4103328022488673201
+      Stage6_walk_9_5: 6762665254822636669
+      Stage6_walk_9_6: -139542730239388366
+      Stage6_walk_9_7: 1657370411701558133
+      Stage6_walk_9_8: -3506617039659376069
+      Stage6_walk_9_9: -6843763210136755040
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
