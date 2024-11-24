@@ -13,10 +13,10 @@ public class GameManager : Singleton<GameManager>
     public NoParaDel OnScore;
     public Color OnMouseColor = Color.white;
 
-
     Coroutine coroutine;
 
     public Vector3 clickPosition;
+    public GameObject hitOtherObj;
     protected override void Awake()
     {
         base.Awake();
