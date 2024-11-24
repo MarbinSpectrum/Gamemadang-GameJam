@@ -26,6 +26,9 @@ public class CutSceneEvent : MonoBehaviour
 
     public void StartCutScene()
     {
+        Destroy(shoot);
+        Destroy(explosion);
+
         throwObj.SetActive(false);
         sound.sound = Sound.SE_CutScene;
         sound.PlaySound();
@@ -41,13 +44,10 @@ public class CutSceneEvent : MonoBehaviour
         Sequence objSequence = DOTween.Sequence().SetUpdate(true)
         .Append(throwObj.transform.DOMove(new Vector2(10,10), 1f))
         .Join(throwObj.transform.DORotate(new Vector3(0, 0, 360), 0.3f, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1));
-
     }
 
     public void EndCutScene()
     {
-        Destroy(shoot);
-        Destroy(explosion);
         gameObject.SetActive(false);
     }
 

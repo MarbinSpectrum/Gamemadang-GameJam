@@ -1261,15 +1261,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77bfa5142ecf2ab499114dd1513ae3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalSpawnCnt: 50
+  normalSpawnCnt: 20
   normalUnit: 6400000065000000660000006700000068000000690000006a000000
   otherUnit: 107
   xRange:
   - -7
   - 7
   yRange:
-  - -5
-  - 1.5
+  - -3
+  - 1
 --- !u!1 &7228409943592885726
 GameObject:
   m_ObjectHideFlags: 0
