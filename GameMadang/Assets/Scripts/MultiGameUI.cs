@@ -189,32 +189,51 @@ public class MultiGameUI : MonoBehaviour
 
     private void GameDecision()
     {
-        if(InGameSync.instance.masterWin > InGameSync.instance.slaveWin)
+        IEnumerator ReturnResult()
         {
-            if (InGameSync.instance.IsMasterClient()) 
-                winPanel.SetActive(true);
+            SoundMgr.Instance.PlaySE(Sound.SE_CutScene);
+            if (InGameSync.instance.res == GameResult.MasterWin)
+                masterCutScene.gameObject.SetActive(true);
+            else if (InGameSync.instance.res == GameResult.SlaveWin)
+                slaveCutScene.gameObject.SetActive(true);
+
+            yield return new WaitForSecondsRealtime(5f);
+
+            if (InGameSync.instance.masterWin > InGameSync.instance.slaveWin)
+            {
+                if (InGameSync.instance.IsMasterClient())
+                    winPanel.SetActive(true);
+                else
+                    LosePanel.SetActive(true);
+            }
             else
-                LosePanel.SetActive(true);
+            {
+                if (InGameSync.instance.IsMasterClient())
+                    LosePanel.SetActive(true);
+                else
+                    winPanel.SetActive(true);
+            }
+            SoundMgr.Instance.PlaySE(Sound.SE_GameEndPopup);
         }
-        else
-        {
-            if (InGameSync.instance.IsMasterClient()) 
-                LosePanel.SetActive(true);
-            else 
-                winPanel.SetActive(true);
-        }
-        SoundMgr.Instance.PlaySE(Sound.SE_GameEndPopup);
+        StartCoroutine(ReturnResult());
     }
 
     IEnumerator ReturnResult()
     {
-        SoundMgr.Instance.PlaySE(Sound.SE_CutScene);
-        if (InGameSync.instance.res == GameResult.MasterWin)
-            masterCutScene.gameObject.SetActive(true);
-        else if (InGameSync.instance.res == GameResult.SlaveWin)
-            slaveCutScene.gameObject.SetActive(true);
+        if(InGameSync.instance.res == GameResult.Draw)
+        {
+            yield return new WaitForSecondsRealtime(1f);
+        }
+        else
+        {
+            SoundMgr.Instance.PlaySE(Sound.SE_CutScene);
+            if (InGameSync.instance.res == GameResult.MasterWin)
+                masterCutScene.gameObject.SetActive(true);
+            else if (InGameSync.instance.res == GameResult.SlaveWin)
+                slaveCutScene.gameObject.SetActive(true);
 
-        yield return new WaitForSecondsRealtime(5f);
+            yield return new WaitForSecondsRealtime(5f);
+        }
 
         Init();
     }
