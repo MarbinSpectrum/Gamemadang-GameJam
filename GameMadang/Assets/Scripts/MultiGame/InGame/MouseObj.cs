@@ -22,14 +22,14 @@ public class MouseObj : MonoBehaviourPunCallbacks
         if (PhotonNetwork.MasterClient.UserId == ServerMgr.userId)
         {
             if (photonView.IsMine)
-                sp.sprite = myMouse;
+                sp.sprite = master;
             else
                 sp.sprite = slave;
         }
         else
         {
             if (photonView.IsMine)
-                sp.sprite = myMouse;
+                sp.sprite = slave;
             else
                 sp.sprite = master;
         }
