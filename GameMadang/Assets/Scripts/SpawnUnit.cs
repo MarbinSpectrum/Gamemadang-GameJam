@@ -52,6 +52,9 @@ public class SpawnUnit : MonoBehaviour
         }
     }
 
+    public int GetSpawnCnt() => normalSpawnCnt;
     public UnitTag[] GetSpawnUnit() => normalUnit;
     public UnitTag GetSpawnOtherUnit() => otherUnit;
+    public float[] GetSpawnxRange() => xRange;
+    public float[] GetSpawnyRange() => yRange;
 }

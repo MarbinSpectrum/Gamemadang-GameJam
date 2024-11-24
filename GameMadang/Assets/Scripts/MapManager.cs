@@ -35,13 +35,15 @@ public class MapManager : Singleton<MapManager>
     }
 
     public void UpdateMap()//±âÁ¸¸Ê²ô°í »õ·Î¿î ¸Ê¹Þ¾Æ¿À±â
-    {
-        if(curMap!=null)
-            curMap.gameObject.SetActive(false);
-        curMap = GetMap(GameManager.Instance.curStage);
-    }
+        => UpdateMap(GameManager.Instance.curStage);
 
-    private StageObj GetMap(int stageNum)
+    public void UpdateMap(int stageNum)
+    {
+        if (curMap != null)
+            curMap.gameObject.SetActive(false);
+        curMap = GetMap(stageNum);
+    }
+    public StageObj GetMap(int stageNum)
     {
         spawnUnit = mapData[stageNum - 1].GetSpawnUnit();
         curMap = mapData[stageNum - 1];
