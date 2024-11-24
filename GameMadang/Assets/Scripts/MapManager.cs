@@ -30,8 +30,12 @@ public class MapManager : Singleton<MapManager>
 
     public void CloseMap()
     {
-        curMap.gameObject.SetActive(false);
-        curMap = null;
+        if(curMap != null)
+        {
+            curMap.gameObject.SetActive(false);
+            curMap = null;
+        }
+       
     }
 
     public void UpdateMap()//±âÁ¸¸Ê²ô°í »õ·Î¿î ¸Ê¹Þ¾Æ¿À±â

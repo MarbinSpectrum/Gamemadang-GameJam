@@ -32,6 +32,9 @@ public class SingleGameUI : MonoBehaviour
 
     private void Awake()
     {
+        MapManager.Instance.CloseMap();
+        ObjectPool.Instance.ClearObj();
+
         GameManager.Instance.OnLife = DecreaseLife;
         GameManager.Instance.OnScore = StartCutScene;
        
@@ -57,11 +60,7 @@ public class SingleGameUI : MonoBehaviour
 
     private void SceneChange(string name)
     {
-        MapManager.Instance.CloseMap();
-
-        ObjectPool.Instance.ClearObj();
         SceneManager.LoadScene(name);
-
     }
 
     private void DecreaseLife()
