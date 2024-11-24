@@ -15,6 +15,7 @@ public class Intro : MonoBehaviour
 
     private void Start()
     {
+        SoundMgr.Instance.PlayBGM(Sound.BGM_DarkFight);
         SetPage(nowPage);
     }
 

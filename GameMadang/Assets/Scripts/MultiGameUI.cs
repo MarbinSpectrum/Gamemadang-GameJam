@@ -96,6 +96,7 @@ public class MultiGameUI : MonoBehaviour
 
     public void CheckLife()
     {
+        SoundMgr.Instance.PlaySE(Sound.SE_WrongExplosion);
         if (InGameSync.instance.IsMasterClient())
         {
             InGameSync.instance.masterHp--;
@@ -112,6 +113,7 @@ public class MultiGameUI : MonoBehaviour
 
     public void CheckScore()//정답 클릭시 호출
     {
+        SoundMgr.Instance.PlaySE(Sound.SE_Explosion);
         if (InGameSync.instance.IsMasterClient())
         {
             InGameSync.instance.res = GameResult.MasterWin;
@@ -200,11 +202,13 @@ public class MultiGameUI : MonoBehaviour
                 LosePanel.SetActive(true);
             else 
                 winPanel.SetActive(true);
-        }   
+        }
+        SoundMgr.Instance.PlaySE(Sound.SE_GameEndPopup);
     }
 
     IEnumerator ReturnResult()
     {
+        SoundMgr.Instance.PlaySE(Sound.SE_CutScene);
         if (InGameSync.instance.res == GameResult.MasterWin)
             masterCutScene.gameObject.SetActive(true);
         else if (InGameSync.instance.res == GameResult.SlaveWin)
