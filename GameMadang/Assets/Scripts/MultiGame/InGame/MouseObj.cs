@@ -9,6 +9,7 @@ public class MouseObj : MonoBehaviourPunCallbacks
     [SerializeField] private SpriteRenderer sp;
     [SerializeField] private Sprite master;
     [SerializeField] private Sprite slave;
+    [SerializeField] private Sprite myMouse;
 
     private void FixedUpdate()
     {

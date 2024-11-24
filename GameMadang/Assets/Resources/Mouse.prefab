@@ -105,6 +105,7 @@ MonoBehaviour:
   sp: {fileID: 3729053409443741938}
   master: {fileID: 21300000, guid: 58c7f8f297e055348b3c4b09987d4436, type: 3}
   slave: {fileID: 21300000, guid: 02164965e287c4144a91c23789f9293a, type: 3}
+  myMouse: {fileID: 21300000, guid: eec9083ca9aa85a468d17b80e2aae26c, type: 3}
 --- !u!114 &1881659288445759878
 MonoBehaviour:
   m_ObjectHideFlags: 0
