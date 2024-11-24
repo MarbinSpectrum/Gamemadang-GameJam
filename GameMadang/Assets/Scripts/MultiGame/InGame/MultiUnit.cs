@@ -16,7 +16,7 @@ public class MultiUnit : MonoBehaviourPunCallbacks
     private int time = 0;
     private bool init = false;
     private Vector3 defaultScale;
-
+    public UnitTag unitTag;
     [SerializeField] private SpriteRenderer spriteRender;
     [SerializeField] private Rigidbody2D rigidbody2D;
 
@@ -32,7 +32,6 @@ public class MultiUnit : MonoBehaviourPunCallbacks
         gameSeed = pGameSeed;
         time = 0;
         transform.localScale = defaultScale;
-        spriteRender.color = new Color(1, 1, 1, 1);
         spriteRender.sortingOrder = 0;
     }
 

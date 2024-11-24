@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Photon.Pun;
 
 public class MultiSpawn : MonoBehaviour
 {
@@ -61,7 +62,6 @@ public class MultiSpawn : MonoBehaviour
         unit.transform.position = pos;
 
         unit.gameObject.SetActive(true);
-
         targetUnit = unit;
     }
 
