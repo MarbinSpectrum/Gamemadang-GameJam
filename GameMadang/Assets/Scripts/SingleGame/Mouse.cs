@@ -40,8 +40,7 @@ public class Mouse : MonoBehaviour
                 {
                     GameManager.Instance.clickPosition = Input.mousePosition;
                     GameManager.Instance.OnScore();
-                    
-                    Debug.Log("정답");
+
                     return;
                 }
                 else if (hit[i].collider.gameObject.layer == 6)
@@ -54,6 +53,13 @@ public class Mouse : MonoBehaviour
                     Debug.Log("오답");
 
                 }
+
+                GameManager.Instance.OnMouseColor = Color.red;
+
+            }
+            else
+            {
+                GameManager.Instance.OnMouseColor = Color.white;
             }
         }
         if(hit.Length==0)

@@ -19,7 +19,6 @@ public class StageSelectUI : MonoBehaviour
     {
         MapManager.Instance.CloseMap();
         ObjectPool.Instance.ClearObj();
-
         backBtn.onClick.AddListener(() => SceneChange("Title"));
         stages = new GameObject[stageCount];
         curOpenStage = GameManager.Instance.ClearStage;
