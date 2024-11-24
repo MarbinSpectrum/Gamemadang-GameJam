@@ -25,6 +25,10 @@ public class MultiGameUI : MonoBehaviour
     [SerializeField] private GameObject countPanel;
 
     [SerializeField] private TimeUI timeCheck;
+
+    [SerializeField] private CutSceneEvent masterCutScene;
+    [SerializeField] private CutSceneEvent slaveCutScene;
+
     private bool runGame = false;
     private int gameCnt = 0;
     private GameObject myMouse = null;
@@ -53,6 +57,8 @@ public class MultiGameUI : MonoBehaviour
         IEnumerator CreateUnitCor()
         {
             countPanel.SetActive(true);
+            masterCutScene.gameObject.SetActive(false);
+            slaveCutScene.gameObject.SetActive(false);
             timeCheck.timeOver = false;
             timeCheck.InitTime();
 
@@ -199,7 +205,13 @@ public class MultiGameUI : MonoBehaviour
 
     IEnumerator ReturnResult()
     {
-        yield return new WaitForSecondsRealtime(1.5f);
+        if (InGameSync.instance.res == GameResult.MasterWin)
+            masterCutScene.gameObject.SetActive(true);
+        else if (InGameSync.instance.res == GameResult.SlaveWin)
+            slaveCutScene.gameObject.SetActive(true);
+
+        yield return new WaitForSecondsRealtime(5f);
+
         Init();
     }
 

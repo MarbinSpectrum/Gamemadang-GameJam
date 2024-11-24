@@ -12,7 +12,7 @@ public class MultiSpawn : MonoBehaviour
         ObjectPool.Instance.ClearObj();
 
         MapManager.Instance.UpdateMap(stageNum + 1);
-        MapManager.Instance.ActiveMap();
+        MapManager.Instance.curMap.gameObject.SetActive(true);
         SpawnUnit spawnUnit = MapManager.Instance.curMap.GetSpawnUnit();
 
         int spawnCnt = spawnUnit.GetSpawnCnt();
