@@ -19,11 +19,16 @@ public class Intro : MonoBehaviour
 
     private void SetPage(int n)
     {
-        if(pageAni != null)
+        if (n > 4)
+            return;
+
+        if (pageAni != null)
         {
             StopCoroutine(pageAni);
             pageAni = null;
         }
+
+
         IEnumerator Run()
         {
             if (n == 0)
