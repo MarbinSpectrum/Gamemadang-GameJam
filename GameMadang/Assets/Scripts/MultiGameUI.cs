@@ -241,14 +241,24 @@ public class MultiGameUI : MonoBehaviour
     {
         MultiUnit targetUnit = multiSpawn.TargetUnit();
         Vector2 pos = Camera.main.WorldToScreenPoint(targetUnit.transform.position);
-        masterCutScene.ShootSFX(pos);
+        targetUnit.gameObject.SetActive(false);
+
+        UnitObj unitObj = ObjectPool.Instance.SpawnFromPool(targetUnit.unitTag);
+        unitObj.transform.position = targetUnit.transform.position;
+        unitObj.transform.localScale = targetUnit.transform.localScale;
+        masterCutScene.ShootSFX(pos, unitObj.gameObject);
     }
 
     public void MultiShootSFX_Slave()
     {
         MultiUnit targetUnit = multiSpawn.TargetUnit();
         Vector2 pos = Camera.main.WorldToScreenPoint(targetUnit.transform.position);
-        slaveCutScene.ShootSFX(pos);
+        targetUnit.gameObject.SetActive(false);
+
+        UnitObj unitObj = ObjectPool.Instance.SpawnFromPool(targetUnit.unitTag);
+        unitObj.transform.position = targetUnit.transform.position;
+        unitObj.transform.localScale = targetUnit.transform.localScale;
+        slaveCutScene.ShootSFX(pos, unitObj.gameObject);
     }
 
     public void MainScene()

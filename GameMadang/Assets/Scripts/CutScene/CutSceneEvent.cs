@@ -54,16 +54,17 @@ public class CutSceneEvent : MonoBehaviour
     //이펙트를 하나로 합치고 
     public void ShootSFX()
     {
-        Vector2 mousePosition = GameManager.Instance.clickPosition;//클릭한 좌표 불러오기
-        ShootSFX(mousePosition);
+        Vector2 mousePosition = GameManager.Instance.clickPosition;
+        GameObject throwGameObj = GameManager.Instance.hitOtherObj;
+        ShootSFX(mousePosition, throwGameObj);
     }
 
-    public void ShootSFX(Vector2 screenPos)
+    public void ShootSFX(Vector2 screenPos, GameObject pThrowGameObj)
     {
-        throwObj = GameManager.Instance.hitOtherObj;
-        throwObj.GetComponent<SpriteRenderer>().sortingOrder = 1;
-        float deviation = throwObj.transform.localScale.x - throwObj.transform.localScale.y;
-        throwObj.transform.localScale = new Vector2(throwObj.transform.localScale.x+(0.03f+ deviation), throwObj.transform.localScale.y+(0.03f -deviation));
+        throwObj = pThrowGameObj;
+        throwObj.GetComponent<SpriteRenderer>().sortingOrder = 100;
+
+        throwObj.transform.localScale = new Vector3(throwObj.transform.localScale.x, throwObj.transform.localScale.y, throwObj.transform.localScale.z) * 2;
 
         sound = gameObject.GetComponent<SoundObj>();
         sound.sound = Sound.SE_LaserShooting;

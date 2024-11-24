@@ -9,15 +9,24 @@ public class UnitObj : MonoBehaviour
     private int unitKey;
     private int gameSeed;
     private int time = 0;
-
+    private bool init = false;
+    private Vector3 defaultScale;
     [SerializeField] private Rigidbody2D rigidbody2D;
 
-    public void SetUnit(int pUnitKey,int pGameSeed)
+    public void SetUnit(int pUnitKey, int pGameSeed)
     {
         unitKey = pUnitKey;
         gameSeed = pGameSeed;
         time = 0;
 
+        if (init == false)
+        {
+            init = true;
+            defaultScale = transform.localScale;
+        }
+
+        GetComponent<SpriteRenderer>().sortingOrder = 0;
+        transform.localScale = defaultScale;
     }
 
     private void FixedUpdate()
