@@ -87,6 +87,28 @@ public enum UnitTag
     Stage5_9,
     Stage5_10,
     Stage5_Other,
+
+    //스테이지5 유닛
+    Stage6_1 = 600,
+    Stage6_2,
+    Stage6_3,
+    Stage6_4,
+    Stage6_5,
+    Stage6_6,
+    Stage6_7,
+    Stage6_8,
+    Stage6_9,
+    Stage6_10,
+    Stage6_11,
+    Stage6_12,
+    Stage6_13,
+    Stage6_14,
+    Stage6_15,
+    Stage6_16,
+    Stage6_17,
+    Stage6_18,
+    Stage6_19,
+    Stage6_Other,
 }
 
 public enum Sound

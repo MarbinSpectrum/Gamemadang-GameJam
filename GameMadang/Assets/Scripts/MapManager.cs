@@ -49,6 +49,7 @@ public class MapManager : Singleton<MapManager>
     }
     public StageObj GetMap(int stageNum)
     {
+        Debug.Log(stageNum);
         spawnUnit = mapData[stageNum - 1].GetSpawnUnit();
         curMap = mapData[stageNum - 1];
 
