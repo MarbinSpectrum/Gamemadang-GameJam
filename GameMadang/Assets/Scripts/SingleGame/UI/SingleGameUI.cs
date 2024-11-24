@@ -92,7 +92,6 @@ public class SingleGameUI : MonoBehaviour
     }
     public void ClearStage()
     {
-       
         if(GameManager.Instance.CompareStage())//최신 스테이지를 진행했을때만 
         {
             GameManager.Instance.ClearStage++;

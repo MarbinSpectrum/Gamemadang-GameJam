@@ -29,6 +29,8 @@ public class CutSceneEvent : MonoBehaviour
         Destroy(shoot);
         Destroy(explosion);
 
+        text.text = "";
+
         throwObj.SetActive(false);
         sound.sound = Sound.SE_CutScene;
         sound.PlaySound();
