@@ -58,10 +58,13 @@ public class Mouse : MonoBehaviour
                     Debug.Log("¿À´ä");
                 }
 
-                GameManager.Instance.OnMouseColor = Color.red;
-                if (coroutine == null) coroutine = StartCoroutine(ReturnColor());
+                if(hit[i].collider.gameObject.layer != 8)
+                {
+                    GameManager.Instance.ActiveSFX();
+                    GameManager.Instance.OnMouseColor = Color.red;
+                    if (coroutine == null) coroutine = StartCoroutine(ReturnColor());
+                }
 
-               // Debug.Log(GameManager.Instance.OnMouseColor);
             }
            
         }
@@ -80,6 +83,5 @@ public class Mouse : MonoBehaviour
         yield return new WaitForSeconds(1f);
         GameManager.Instance.OnMouseColor = Color.white;
         coroutine = null;
-        Debug.Log(1111);
     }
 }

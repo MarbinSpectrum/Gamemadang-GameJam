@@ -17,6 +17,9 @@ public class GameManager : Singleton<GameManager>
 
     public Vector3 clickPosition;
     public GameObject hitOtherObj;
+
+    public GameObject wrongClickVFX;
+    Coroutine VFXcorutine;
     protected override void Awake()
     {
         base.Awake();
@@ -57,6 +60,22 @@ public class GameManager : Singleton<GameManager>
     {
         if(curStage==ClearStage) return true;
         return false;
+    }
+    public void ActiveSFX()
+    {
+        Vector2 pos = Camera.main.ScreenToWorldPoint(clickPosition);
+        wrongClickVFX.transform.position = pos;
+        wrongClickVFX.gameObject.SetActive(true);
+
+        if (VFXcorutine != null) StopCoroutine(VFXcorutine);    
+        VFXcorutine = StartCoroutine(CloseVFX());
+
+    }
+    IEnumerator CloseVFX()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        wrongClickVFX.SetActive(false);
+        VFXcorutine = null;
     }
 
 }
