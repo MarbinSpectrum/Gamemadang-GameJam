@@ -13,6 +13,7 @@ public class OptionUI : MonoBehaviour
         slider.onValueChanged.AddListener((v) =>
         {
             SoundMgr.Instance.SetVolume(v);
+            SaveLoad.Instance.Save();
         });
     }
 }
