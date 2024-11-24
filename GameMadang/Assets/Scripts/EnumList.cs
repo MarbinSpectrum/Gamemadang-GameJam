@@ -110,3 +110,15 @@ public enum UnitTag
     Stage6_19,
     Stage6_Other,
 }
+
+public enum Sound
+{
+    SE_WrongExplosion = 0,
+    SE_LaserShooting,
+    SE_GameEndPopup,
+    SE_Explosion,
+    SE_CutScene,
+    SE_Click,
+
+    BGM_DarkFight = 1000,
+}
