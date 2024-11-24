@@ -14,6 +14,7 @@ public class CutSceneEvent : MonoBehaviour
 
     [SerializeField] private Transform shootTransform;
     [SerializeField] private GameObject image;
+    private float? x=null;
 
     private GameObject throwObj;
 
@@ -37,7 +38,7 @@ public class CutSceneEvent : MonoBehaviour
         RandomText();
         image.SetActive(true);
 
-        image.transform.DOLocalMoveX(0,0.1f).SetUpdate(true);
+        image.transform.DOLocalMoveX(0,0.1f).From((float)x, true).SetUpdate(true);
 
 
     }
@@ -63,6 +64,8 @@ public class CutSceneEvent : MonoBehaviour
 
     public void ShootSFX(Vector2 screenPos, GameObject pThrowGameObj)
     {
+        if (x ==null) x = image.transform.localPosition.x;
+
         throwObj = pThrowGameObj;
         throwObj.GetComponent<SpriteRenderer>().sortingOrder = 100;
 
