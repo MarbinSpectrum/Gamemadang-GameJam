@@ -226,7 +226,6 @@ public class MultiGameUI : MonoBehaviour
         }
         else
         {
-            SoundMgr.Instance.PlaySE(Sound.SE_CutScene);
             if (InGameSync.instance.res == GameResult.MasterWin)
                 masterCutScene.gameObject.SetActive(true);
             else if (InGameSync.instance.res == GameResult.SlaveWin)
@@ -240,14 +239,14 @@ public class MultiGameUI : MonoBehaviour
 
     public void MultiShootSFX_Master()
     {
-        GameObject targetUnit = multiSpawn.TargetUnit();
+        MultiUnit targetUnit = multiSpawn.TargetUnit();
         Vector2 pos = Camera.main.WorldToScreenPoint(targetUnit.transform.position);
         masterCutScene.ShootSFX(pos);
     }
 
     public void MultiShootSFX_Slave()
     {
-        GameObject targetUnit = multiSpawn.TargetUnit();
+        MultiUnit targetUnit = multiSpawn.TargetUnit();
         Vector2 pos = Camera.main.WorldToScreenPoint(targetUnit.transform.position);
         slaveCutScene.ShootSFX(pos);
     }
