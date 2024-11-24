@@ -2732,6 +2732,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1113577949}
   - component: {fileID: 1113577948}
+  - component: {fileID: 1113577950}
   m_Layer: 0
   m_Name: Mouse
   m_TagString: Untagged
@@ -2751,6 +2752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ac7c044677ad14b8fcaad5a6fa933a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 1113577950}
 --- !u!4 &1113577949
 Transform:
   m_ObjectHideFlags: 0
@@ -2766,6 +2768,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1113577950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113577947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97fe527b598802d4db15b22cf8cfc82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: 0
 --- !u!212 &1122706040 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6357888914203872285, guid: ea6d57a5b26348c428eface6897d428a, type: 3}
