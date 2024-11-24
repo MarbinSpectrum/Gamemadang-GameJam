@@ -10,6 +10,9 @@ public class TitleUI : MonoBehaviour
 
     private void Awake()
     {
+        MapManager.Instance.CloseMap();
+        ObjectPool.Instance.ClearObj();
+
         gameExitBtn.onClick.AddListener(() => GameExit());
         singleGameBtn.onClick.AddListener(() => SeneChange("StageSelect"));
     }

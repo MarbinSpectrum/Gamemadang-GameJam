@@ -3360,7 +3360,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC548\uB155"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7a15ce7096b896d4197cd8ff5c723be6, type: 2}
   m_sharedMaterial: {fileID: 8997393980930846797, guid: 7a15ce7096b896d4197cd8ff5c723be6, type: 2}
