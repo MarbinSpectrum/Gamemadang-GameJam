@@ -178,6 +178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5003512447579999121}
+  - component: {fileID: 7626480290588994301}
   m_Layer: 0
   m_Name: Stage_5
   m_TagString: Untagged
@@ -203,6 +204,19 @@ Transform:
   - {fileID: 8651133105868276675}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7626480290588994301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2265621374258112159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d6674f2305efb48b851de7bce6afaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnUnit: {fileID: 5505049185432673217}
 --- !u!1 &2485516282796623832
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,9 +357,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77bfa5142ecf2ab499114dd1513ae3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitObj: {fileID: 9181466234547924492, guid: bcca31c67850c0d4bbb8c0bd4168bede, type: 3}
-  findObj: {fileID: 9181466234547924492, guid: 70a899f236ad34f4a9be865907697d3b, type: 3}
-  spawnCnt: 1000
+  normalSpawnCnt: 50
+  normalUnit: f4010000f5010000f6010000f7010000f8010000f9010000fa010000fb010000fc010000fd010000
+  otherUnit: 510
   xRange:
   - -7
   - 7
@@ -429,7 +443,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -3925008955889026512, guid: 92b80e2dee016dd41bdedff323f26434, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -576,7 +590,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1697846552576183905, guid: 29e2ead86cd4d2b42a0aafb3effc4efe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -991,7 +1005,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -7895724518213830090, guid: 96c19873f472a9f44b0da30392e333f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1138,7 +1152,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -3925008955889026512, guid: 92b80e2dee016dd41bdedff323f26434, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1285,7 +1299,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1697846552576183905, guid: 29e2ead86cd4d2b42a0aafb3effc4efe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1432,7 +1446,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -7895724518213830090, guid: 96c19873f472a9f44b0da30392e333f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1579,7 +1593,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -5655143960059923232, guid: 297507334f11d9c4091294701633770e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1726,7 +1740,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -5655143960059923232, guid: 297507334f11d9c4091294701633770e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1873,7 +1887,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -5655143960059923232, guid: 297507334f11d9c4091294701633770e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1

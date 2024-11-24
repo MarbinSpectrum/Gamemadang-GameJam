@@ -19,7 +19,7 @@ public class MultiSpawn : MonoBehaviour
             float y = Random.Range(-3.0f, 3.0f);
 
             Vector3 pos = new Vector3(x, y);
-            UnitObj obj = ObjectPool.Instance.SpawnFromPool("Obj1");
+            UnitObj obj = ObjectPool.Instance.SpawnFromPool(UnitTag.TestUnit_1);
             obj.SetUnit(i, seed);
             obj.transform.position = pos;
         }

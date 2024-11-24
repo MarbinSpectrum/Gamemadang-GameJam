@@ -167,7 +167,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -7702966372201790322, guid: 0f6e87c5240a25c4294fed9e35e58df0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -549,13 +549,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6930438016033883141}
+  - component: {fileID: 741239462070096211}
   m_Layer: 0
   m_Name: Stage_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6930438016033883141
 Transform:
   m_ObjectHideFlags: 0
@@ -574,6 +575,19 @@ Transform:
   - {fileID: 8911436386002893347}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &741239462070096211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4237050732674169370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d6674f2305efb48b851de7bce6afaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnUnit: {fileID: 3993208111221923585}
 --- !u!1 &4592095235483757725
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,7 +665,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -7702966372201790322, guid: 0f6e87c5240a25c4294fed9e35e58df0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -765,9 +779,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77bfa5142ecf2ab499114dd1513ae3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitObj: {fileID: 9181466234547924492, guid: bcca31c67850c0d4bbb8c0bd4168bede, type: 3}
-  findObj: {fileID: 9181466234547924492, guid: 70a899f236ad34f4a9be865907697d3b, type: 3}
-  spawnCnt: 1000
+  normalSpawnCnt: 50
+  normalUnit: c8000000c9000000ca000000cb000000cc000000cd000000ce000000cf000000d0000000d1000000d2000000d3000000
+  otherUnit: 212
   xRange:
   - -7
   - 7
@@ -1119,7 +1133,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -7702966372201790322, guid: 0f6e87c5240a25c4294fed9e35e58df0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

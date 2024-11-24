@@ -2,38 +2,49 @@ using UnityEngine;
 
 public class MapManager : Singleton<MapManager>
 {
-    [SerializeField] private GameObject[] maps;
+    [SerializeField] private StageObj[] mapData;
     SpawnUnit spawnUnit;
-    public GameObject curMap = null;
+    public StageObj curMap
+    {
+        private set;
+        get;
+    }
+
     protected override void Awake()
     {
         base.Awake();
     }
+
     private void UnitSpawn()
     {
         spawnUnit.Spawn();
     }
+
     public void ActiveMap()//¸Ê È°¼ºÈ­ À¯´Ö ½ºÆù
     {
-        if (curMap == null) UpdateMap();
-        curMap.SetActive(true);
+        if (curMap == null) 
+            UpdateMap();
+        curMap.gameObject.SetActive(true);
         UnitSpawn();
     }
+
     public void CloseMap()
     {
-        curMap.SetActive(false);
+        curMap.gameObject.SetActive(false);
         curMap = null;
     }
+
     public void UpdateMap()//±âÁ¸¸Ê²ô°í »õ·Î¿î ¸Ê¹Þ¾Æ¿À±â
     {
-        if(curMap!=null)curMap.SetActive(false);
+        if(curMap!=null)
+            curMap.gameObject.SetActive(false);
         curMap = GetMap(GameManager.Instance.curStage);
     }
 
-    private GameObject GetMap(int stageNum)
+    private StageObj GetMap(int stageNum)
     {
-        spawnUnit= maps[stageNum - 1].transform.GetChild(0).GetComponent<SpawnUnit>();
-        curMap = maps[stageNum - 1];
+        spawnUnit = mapData[stageNum - 1].GetSpawnUnit();
+        curMap = mapData[stageNum - 1];
 
         return curMap;
     }

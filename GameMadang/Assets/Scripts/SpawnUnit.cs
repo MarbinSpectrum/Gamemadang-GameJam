@@ -1,49 +1,57 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public class SpawnUnit : MonoBehaviour
 {
     
     [SerializeField] private int normalSpawnCnt;
 
     [Header("NormalUnit")]
-    [SerializeField] private Sprite[] sprites;
-    [SerializeField] private Material[] materials;
+    [SerializeField] private UnitTag[] normalUnit;
 
     [Header("OtherUnit")]
-    [SerializeField] private Sprite otherSprite;
-    [SerializeField] private Material otherMaterial;
+    [SerializeField] private UnitTag otherUnit;
 
-    public float[] xRange;
-    public float[] yRange;
+    [SerializeField] private float[] xRange;
+    [SerializeField] private float[] yRange;
 
     
     public void Spawn()
     {
-        for (int i = 0; i < normalSpawnCnt; i++)
+        if (normalUnit.Length > 0)
         {
-            Vector3 pos = new Vector3(Random.Range(xRange[0], xRange[1]), Random.Range(yRange[0], yRange[1]));
-            UnitObj unitObj = ObjectPool.Instance.SpawnFromPool("Obj1");
+            for (int i = 0; i < normalSpawnCnt; i++)
+            {
+                int randomIdx = Random.Range(0, normalUnit.Length);//랜덤 노말유닛 생성
+                int seed = (int)System.DateTime.Now.Ticks;
 
-            int random = Random.Range(0, sprites.Length);//랜덤 노말유닛 생성
+                UnityEngine.Random.InitState(seed + i);
+                float x = Random.Range(xRange[0], xRange[1]);
+                UnityEngine.Random.InitState(seed + seed + i);
+                float y = Random.Range(yRange[0], yRange[1]);
+                Vector3 pos = new Vector3(x, y);
 
-            SpriteRenderer sprite = unitObj.gameObject.GetComponent<SpriteRenderer>();//해당 오브젝트의 머티리얼, 이미지를 바꿔줌
-            sprite.material = materials[random];
-            sprite.sprite = sprites[random];
-
-            unitObj.SetUnit(i, (int)System.DateTime.Now.Ticks);
-            unitObj.transform.position = pos;
+                UnitTag spawnUnitTag = normalUnit[randomIdx];
+                UnitObj unitObj = ObjectPool.Instance.SpawnFromPool(spawnUnitTag);
+                unitObj.SetUnit(i, (int)System.DateTime.Now.Ticks);
+                unitObj.transform.position = pos;
+            }
         }
-        for (int j = 0; j < 1; j++)
+
         {
-            Vector3 pos = new Vector3(Random.Range(xRange[0], xRange[1]), Random.Range(yRange[0], yRange[1]));
-            UnitObj unitObj = ObjectPool.Instance.SpawnFromPool("Obj2");
+            int seed = (int)System.DateTime.Now.Ticks;
 
-            SpriteRenderer sprite = unitObj.gameObject.GetComponent<SpriteRenderer>();//해당 오브젝트의 머티리얼, 이미지를 바꿔줌
-            sprite.material = otherMaterial;
-            sprite.sprite = otherSprite;
+            UnityEngine.Random.InitState(seed);
+            float x = Random.Range(xRange[0], xRange[1]);
+            UnityEngine.Random.InitState(seed + seed);
+            float y = Random.Range(yRange[0], yRange[1]);
+            Vector3 pos = new Vector3(x, y);
+            UnitObj unitObj = ObjectPool.Instance.SpawnFromPool(otherUnit);
 
-            unitObj.SetUnit(j, (int)System.DateTime.Now.Ticks);
+            unitObj.SetUnit(20000, (int)System.DateTime.Now.Ticks);
             unitObj.transform.position = pos;
         }
     }
+
+    public UnitTag[] GetSpawnUnit() => normalUnit;
+    public UnitTag GetSpawnOtherUnit() => otherUnit;
 }
